@@ -7,7 +7,7 @@
   },
   "plugins": [
     {
-      "plugin": "@nx/gradle",
+      "plugin": "@nx/gradle/plugin-v1",
       "options": {
         "testTargetName": "test",
         "classesTargetName": "classes",
@@ -16,12 +16,9 @@
     }
   ],
   "namedInputs": {
-    "default": [
-      "{projectRoot}/**/*"
-    ],
-    "production": [
-      "default",
-      "!{projectRoot}/src/test/**/*"
-    ]
-  }
+    "default": ["{projectRoot}/**/*"],
+    "production": ["default", "!{projectRoot}/src/test/**/*"]
+  },
+  "nxCloudUrl": "https://staging.nx.app",
+  "nxCloudId": "67a56832eb5d9093e3ebe776"
 }
