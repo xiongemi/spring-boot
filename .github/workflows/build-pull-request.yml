@@ -22,6 +22,7 @@ jobs:
           check-latest: true
           cache: npm
       - run: npm install
+      - run: NX_CLOUD_RETRIEVAL_CONCURRENCY=8 NX_PERF_LOGGING=true NX_VERBOSE_LOGGING=true npx nx-cloud start-ci-run --distribute-on="16 linux-extra-large-plus-jvm" --require-explicit-completion
 
       - name: Build
         id: build
@@ -39,4 +40,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: build-reports
-          path: '**/build/reports/'
+          path: "**/build/reports/"
