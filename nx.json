@@ -16,12 +16,9 @@
     }
   ],
   "namedInputs": {
-    "default": [
-      "{projectRoot}/**/*"
-    ],
-    "production": [
-      "default",
-      "!{projectRoot}/src/test/**/*"
-    ]
-  }
+    "default": ["{projectRoot}/**/*"],
+    "production": ["default", "!{projectRoot}/src/test/**/*"]
+  },
+  "nxCloudUrl": "https://staging.nx.app",
+  "nxCloudId": "66bbc5949905b5c2f36611f0"
 }
