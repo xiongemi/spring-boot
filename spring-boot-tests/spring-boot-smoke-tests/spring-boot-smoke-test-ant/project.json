@@ -1,0 +1,7 @@
+{
+  "targets": {
+    "test": {
+      "cache": true
+    }
+  }
+}
