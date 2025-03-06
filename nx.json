@@ -1,10 +1,4 @@
 {
-  "installation": {
-    "version": "0.0.0-pr-29464-f9a8c49",
-    "plugins": {
-      "@nx/gradle": "0.0.0-pr-29464-f9a8c49"
-    }
-  },
   "plugins": [
     {
       "plugin": "@nx/gradle",
