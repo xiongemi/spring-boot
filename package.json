@@ -3,8 +3,5 @@
     "dependencies": {
         "@nx/gradle": "0.0.0-pr-29464-33a818b",
         "nx": "0.0.0-pr-29464-33a818b"
-    },
-    "devDependencies": {
-        "nx": "19.0.0"
     }
 }
