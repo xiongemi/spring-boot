@@ -6,6 +6,7 @@ jobs:
   build:
     env: 
       NX_VERBOSE_LOGGING: true
+      NX_VERSION: "19.0.0"
       NX_PERF_LOGGING: true
       NX_CLOUD_SKIP_WORKSPACE_DATA_CACHE: true
       NX_BRANCH: main
