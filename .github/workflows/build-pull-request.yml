@@ -4,6 +4,11 @@ permissions:
   contents: read
 jobs:
   build:
+    env: 
+      NX_VERBOSE_LOGGING: true
+      NX_PERF_LOGGING: true
+      NX_CLOUD_SKIP_WORKSPACE_DATA_CACHE: true
+      
     name: Build Pull Request
     runs-on: ${{ vars.UBUNTU_MEDIUM || 'ubuntu-latest' }}
     steps:
@@ -22,6 +27,21 @@ jobs:
           check-latest: true
           cache: npm
       - run: npm install
+
+      - name: Java 
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+
+      - name: Show projects (cold)
+        run: npx nx show projects
+
+      - name: Show projects (warm)
+        run: npx nx show projects
+
+      - name: Run to cache
+        run: npx nx build spring-boot-starter --no-dte
 
       - name: Build
         id: build
