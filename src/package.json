@@ -1,6 +1,0 @@
-{
-    "name": "spring-boot",
-    "dependencies": {
-        "nx": "19.0.0"
-    },
-}
