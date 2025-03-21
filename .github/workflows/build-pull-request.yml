@@ -6,6 +6,7 @@ jobs:
   build:
     env: 
       NX_VERBOSE_LOGGING: true
+      NX_DAEMON: false
       NX_PERF_LOGGING: true
       NX_PROJECT_GRAPH_CACHE_DIRECTORY: ".nx/workspace-data"
       NX_CLOUD_SKIP_WORKSPACE_DATA_CACHE: false
