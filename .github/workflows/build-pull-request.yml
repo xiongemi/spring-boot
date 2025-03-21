@@ -6,7 +6,6 @@ jobs:
   build:
     env: 
       NX_VERBOSE_LOGGING: true
-      NX_VERSION: "19.0.0"
       NX_PERF_LOGGING: true
       NX_CLOUD_SKIP_WORKSPACE_DATA_CACHE: false
       NX_BRANCH: main
@@ -35,6 +34,9 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '21'
+        
+      - name: List directories
+        run: ls -laR .nx
 
       - name: Show projects (cold)
         run: npx nx show projects
