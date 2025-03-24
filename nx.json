@@ -1,5 +1,5 @@
 {
-  "bustCache": 4,
+  "bustCache": 400,
   "plugins": [
     {
       "plugin": "@nx/gradle",
