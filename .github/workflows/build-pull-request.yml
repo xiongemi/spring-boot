@@ -4,6 +4,8 @@ permissions:
   contents: read
 jobs:
   build:
+    env:
+      CI: true
     name: Build Pull Request
     runs-on: ${{ vars.UBUNTU_MEDIUM || 'ubuntu-latest' }}
     steps:
