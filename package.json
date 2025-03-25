@@ -1,7 +1,7 @@
 {
     "name": "spring-boot",
     "dependencies": {
-        "@nx/gradle": "^0.0.0-pr-30457-c7159ab",
-        "nx": "0.0.0-pr-30457-c7159ab"
+        "@nx/gradle": "0.0.0-pr-30457-6531626",
+        "nx": "0.0.0-pr-30457-6531626"
     }
 }
