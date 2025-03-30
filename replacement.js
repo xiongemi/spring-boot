@@ -70,14 +70,8 @@ const fn = async (message) => {
             process.send({
                 type: batch_messages_1.BatchMessageType.CompleteBatchExecution,
                 results,
-            }, (err) => {
-                if (err) {
-                    console.error(err);
-                    process.exit(1);
-                }
-                process.exit(0);
             });
-            process.off('message', fn);
+            // process.off('message', fn);
         }
     }
 };
