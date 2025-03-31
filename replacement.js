@@ -31,6 +31,7 @@ async function runTasks(executorName, projectGraph, batchTaskGraph, fullTaskGrap
         const targetConfiguration = projectConfiguration.targets[task.target.target];
         input[task.id] = (0, params_1.combineOptionsForExecutor)(task.overrides, task.target.configuration, targetConfiguration, batchExecutor.schema, null, process.cwd());
     }
+    const runBatchStart = performance.mark(`batch:start`);
     try {
         const results = await batchExecutor.batchImplementationFactory()(batchTaskGraph, input, tasks[0].overrides, context);
         if (typeof results !== 'object') {
@@ -61,18 +62,27 @@ async function runTasks(executorName, projectGraph, batchTaskGraph, fullTaskGrap
         console.error(isVerbose ? e : e.message);
         process.exit(1);
     }
+    finally {
+        const runBatchEnd = performance.mark(`run-batch:end`);
+        performance.measure(`run-batch`, runBatchStart.name, runBatchEnd.name);
+    }
 }
-
-const fn = async (message) => {
+process.on('message', async (message) => {
     switch (message.type) {
         case batch_messages_1.BatchMessageType.RunTasks: {
             const results = await runTasks(message.executorName, message.projectGraph, message.batchTaskGraph, message.fullTaskGraph);
             process.send({
                 type: batch_messages_1.BatchMessageType.CompleteBatchExecution,
+                childId: message.childId,
                 results,
             });
-            // process.off('message', fn);
+            break;
+        }
+        case 'STOP': {
+            if (process.env.NX_BATCH_CHILD_ID === message.childId.toString()) {
+                process.exit(0);
+              }
+              break;
         }
     }
-};
-process.on('message', fn);
+});

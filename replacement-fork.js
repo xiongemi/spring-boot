@@ -42,9 +42,13 @@ class ForkedProcessTaskRunner {
                     const args = (0, utils_1.getPrintableCommandArgsForTask)(Object.values(batchTaskGraph.tasks)[0]);
                     output_1.output.logCommand(args.join(' '));
                 }
+                const childId = Object.values(batchTaskGraph.tasks)[0].id;
                 const p = (0, child_process_1.fork)(workerPath, {
                     stdio: ['inherit', 'inherit', 'inherit', 'ipc'],
-                    env,
+                    env: {
+                        ...env,
+                        NX_BATCH_CHILD_ID: childId,
+                      }
                 });
                 this.processes.add(p);
                 p.once('exit', (code, signal) => {
@@ -66,7 +70,11 @@ class ForkedProcessTaskRunner {
                     switch (message.type) {
                         case batch_messages_1.BatchMessageType.CompleteBatchExecution: {
                             res(message.results);
-                            p.kill(0);
+                            // p.disconnect();
+                            p.send({
+                                type: 'STOP',
+                                childId: message.childId,
+                            });
                             break;
                         }
                         case batch_messages_1.BatchMessageType.RunTasks: {
@@ -87,6 +95,7 @@ class ForkedProcessTaskRunner {
                     projectGraph,
                     batchTaskGraph,
                     fullTaskGraph,
+                    childId
                 });
             }
             catch (e) {
