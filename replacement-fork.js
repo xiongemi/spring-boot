@@ -19,7 +19,7 @@ class ForkedProcessTaskRunner {
         this.options = options;
         this.cliPath = (0, utils_1.getCliPath)();
         this.verbose = process.env.NX_VERBOSE_LOGGING === 'true';
-        this.processes = new Set();
+        this.processes = new Map();
         this.pseudoTerminal = pseudo_terminal_1.PseudoTerminal.isSupported()
             ? (0, pseudo_terminal_1.getPseudoTerminal)()
             : null;
@@ -30,7 +30,6 @@ class ForkedProcessTaskRunner {
         }
         this.setupProcessEventListeners();
     }
-    // TODO: vsavkin delegate terminal output printing
     forkProcessForBatch({ executorName, taskGraph: batchTaskGraph }, projectGraph, fullTaskGraph, env) {
         return new Promise((res, rej) => {
             try {
@@ -48,33 +47,30 @@ class ForkedProcessTaskRunner {
                     env: {
                         ...env,
                         NX_BATCH_CHILD_ID: childId,
-                      }
+                    }
                 });
-                this.processes.add(p);
+                this.processes.set(childId, p);
                 p.once('exit', (code, signal) => {
-                    this.processes.delete(p);
+                    this.processes.delete(childId);
                     if (code === null)
                         code = (0, exit_codes_1.signalToCode)(signal);
                     if (code !== 0) {
-                        const results = {};
-                        for (const rootTaskId of batchTaskGraph.roots) {
-                            results[rootTaskId] = {
-                                success: false,
-                                terminalOutput: '',
-                            };
-                        }
                         rej(new Error(`"${executorName}" exited unexpectedly with code: ${code}`));
                     }
+                });
+                p.once('error', (e) => {
+                    this.processes.delete(childId);
+                    rej(e);
                 });
                 p.on('message', (message) => {
                     switch (message.type) {
                         case batch_messages_1.BatchMessageType.CompleteBatchExecution: {
                             res(message.results);
-                            // p.disconnect();
-                            p.send({
-                                type: 'STOP',
-                                childId: message.childId,
-                            });
+                            const proc = this.processes.get(message.childId);
+                            if (proc && proc instanceof child_process_1.ChildProcess) {
+                                // proc.send({ type: batch_messages_1.BatchMessageType.Stop, childId: message.childId });
+                                proc.kill(0);
+                            }
                             break;
                         }
                         case batch_messages_1.BatchMessageType.RunTasks: {
@@ -95,7 +91,7 @@ class ForkedProcessTaskRunner {
                     projectGraph,
                     batchTaskGraph,
                     fullTaskGraph,
-                    childId
+                    childId,
                 });
             }
             catch (e) {
@@ -160,7 +156,7 @@ class ForkedProcessTaskRunner {
             taskGraph,
             isVerbose: this.verbose,
         });
-        this.processes.add(p);
+        this.processes.set(childId, p);
         let terminalOutput = '';
         p.onOutput((msg) => {
             terminalOutput += msg;
@@ -198,7 +194,7 @@ class ForkedProcessTaskRunner {
                     stdio: ['inherit', 'pipe', 'pipe', 'ipc'],
                     env,
                 });
-                this.processes.add(p);
+                this.processes.set(p.pid.toString(), p);
                 // Re-emit any messages from the task process
                 p.on('message', (message) => {
                     if (process.send) {
@@ -238,7 +234,7 @@ class ForkedProcessTaskRunner {
                     outWithErr.push(chunk.toString());
                 });
                 p.on('exit', (code, signal) => {
-                    this.processes.delete(p);
+                    this.processes.delete(p.pid.toString());
                     if (code === null)
                         code = (0, exit_codes_1.signalToCode)(signal);
                     // we didn't print any output as we were running the command
@@ -268,7 +264,7 @@ class ForkedProcessTaskRunner {
                     stdio: ['inherit', 'inherit', 'inherit', 'ipc'],
                     env,
                 });
-                this.processes.add(p);
+                this.processes.set(p.pid.toString(), p);
                 // Re-emit any messages from the task process
                 p.on('message', (message) => {
                     if (process.send) {
@@ -333,44 +329,44 @@ class ForkedProcessTaskRunner {
             if (this.pseudoTerminal) {
                 this.pseudoTerminal.sendMessageToChildren(message);
             }
-            this.processes.forEach((p) => {
+            for (const p of this.processes.values()) {
                 if ('connected' in p && p.connected) {
                     p.send(message);
                 }
-            });
+            }
         });
         // Terminate any task processes on exit
         process.on('exit', () => {
-            this.processes.forEach((p) => {
+            for (const p of this.processes.values()) {
                 if ('connected' in p ? p.connected : p.isAlive) {
                     p.kill();
                 }
-            });
+            }
         });
         process.on('SIGINT', () => {
-            this.processes.forEach((p) => {
+            for (const p of this.processes.values()) {
                 if ('connected' in p ? p.connected : p.isAlive) {
                     p.kill('SIGTERM');
                 }
-            });
+            }
             // we exit here because we don't need to write anything to cache.
             process.exit((0, exit_codes_1.signalToCode)('SIGINT'));
         });
         process.on('SIGTERM', () => {
-            this.processes.forEach((p) => {
+            for (const p of this.processes.values()) {
                 if ('connected' in p ? p.connected : p.isAlive) {
                     p.kill('SIGTERM');
                 }
-            });
+            }
             // no exit here because we expect child processes to terminate which
             // will store results to the cache and will terminate this process
         });
         process.on('SIGHUP', () => {
-            this.processes.forEach((p) => {
+            for (const p of this.processes.values()) {
                 if ('connected' in p ? p.connected : p.isAlive) {
                     p.kill('SIGTERM');
                 }
-            });
+            }
             // no exit here because we expect child processes to terminate which
             // will store results to the cache and will terminate this process
         });

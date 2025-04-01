@@ -80,7 +80,8 @@ process.on('message', async (message) => {
         }
         case 'STOP': {
             if (process.env.NX_BATCH_CHILD_ID === message.childId.toString()) {
-                process.exit(0);
+                console.log('Stopping child process ' + message.childId);
+                // process.exit(0);
               }
               break;
         }

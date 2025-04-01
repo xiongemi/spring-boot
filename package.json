@@ -4,7 +4,7 @@
         "postinstall": "node patch.js"
     },
     "dependencies": {
-        "@nx/gradle": "0.0.0-pr-30457-5707fb3",
-        "nx": "0.0.0-pr-30457-5707fb3"
+        "@nx/gradle": "0.0.0-pr-30457-5f1b92b",
+        "nx": "0.0.0-pr-30457-5f1b92b"
     }
 }

@@ -16,7 +16,7 @@ jobs:
       - run: NX_CLOUD_RETRIEVAL_CONCURRENCY=8 NX_CLOUD_NO_TIMEOUTS=true NX_PERF_LOGGING=true NX_VERBOSE_LOGGING=true npx nx-cloud start-ci-run --distribute-on="5 linux-extra-large-plus-jvm" --require-explicit-completion
       
       - name: Use Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: 22
           check-latest: true
