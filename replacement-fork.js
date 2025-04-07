@@ -59,17 +59,16 @@ class ForkedProcessTaskRunner {
                 p.on('message', (message) => {
                     switch (message.type) {
                         case batch_messages_1.BatchMessageType.CompleteBatchExecution: {
+                            console.log('Complete Batch', message.results);
                             res(message.results);
                             break;
                         }
-                        case batch_messages_1.BatchMessageType.Performance: {
-                            // console.log("Time for run batch:", message.endsWith.)
-                            break;
-                        }
                         case batch_messages_1.BatchMessageType.RunTasks: {
+                            console.log('RunTasks Batch', message);
                             break;
                         }
                         default: {
+                            console.log('Other Message', message);
                             // Re-emit any non-batch messages from the task process
                             if (process.send) {
                                 process.send(message);
