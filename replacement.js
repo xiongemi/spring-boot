@@ -12,6 +12,7 @@ function getBatchExecutor(executorName, projects) {
     return (0, executor_utils_1.getExecutorInformation)(nodeModule, exportName, workspace_root_1.workspaceRoot, projects);
 }
 async function runTasks(executorName, projectGraph, batchTaskGraph, fullTaskGraph) {
+    console.log(`run-batch`, executorName);
     const input = {};
     const projectsConfigurations = (0, project_graph_1.readProjectsConfigurationFromProjectGraph)(projectGraph);
     const nxJsonConfiguration = (0, configuration_1.readNxJson)();
@@ -78,13 +79,6 @@ process.on('message', async (message) => {
             process.send({
                 type: batch_messages_1.BatchMessageType.CompleteBatchExecution,
                 results,
-            }, (error) => {
-                if (error) {
-                    console.error('Error sending message:', error);
-                    process.exit(1);
-                }
-                console.log('exiting run batch');
-                process.exit(0);
             });
         }
     }

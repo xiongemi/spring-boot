@@ -45,7 +45,7 @@ async function gradlewBatch(taskGraph, inputs, overrides, context) {
             }
             return acc;
         }, {});
-        console.log(`return gradlew batch results`, mappedResults);
+        console.log(`return gradlew batch results`);
         return mappedResults;
     }
     catch (e) {

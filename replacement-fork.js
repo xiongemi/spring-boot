@@ -43,12 +43,14 @@ class ForkedProcessTaskRunner {
                     const args = (0, utils_1.getPrintableCommandArgsForTask)(Object.values(batchTaskGraph.tasks)[0]);
                     output_1.output.logCommand(args.join(' '));
                 }
+                console.log('fork run batch', executorName);
                 const p = (0, child_process_1.fork)(workerPath, {
                     stdio: ['inherit', 'inherit', 'inherit', 'ipc'],
                     env,
                 });
                 this.processes.add(p);
                 p.once('exit', (code, signal) => {
+                    console.log('exiting', code, signal);
                     this.processes.delete(p);
                     if (code === null)
                         code = (0, exit_codes_1.signalToCode)(signal);
@@ -61,6 +63,8 @@ class ForkedProcessTaskRunner {
                         case batch_messages_1.BatchMessageType.CompleteBatchExecution: {
                             console.log('Complete Batch', message.results);
                             res(message.results);
+                            console.log('resolve complete batch');
+                            p.kill();
                             break;
                         }
                         case batch_messages_1.BatchMessageType.RunTasks: {
@@ -75,6 +79,13 @@ class ForkedProcessTaskRunner {
                             }
                         }
                     }
+                });
+                console.log('Send message to fork', {
+                    type: batch_messages_1.BatchMessageType.RunTasks,
+                    executorName,
+                    projectGraph,
+                    batchTaskGraph,
+                    fullTaskGraph,
                 });
                 // Start the tasks
                 p.send({
