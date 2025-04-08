@@ -40,3 +40,7 @@ launch-templates:
           if [ -f package.json ]; then
             npm run postinstall || yarn postinstall || pnpm postinstall
           fi
+
+      - name: unset DOCKER_HOST
+        script: | 
+          unset DOCKER_HOST
