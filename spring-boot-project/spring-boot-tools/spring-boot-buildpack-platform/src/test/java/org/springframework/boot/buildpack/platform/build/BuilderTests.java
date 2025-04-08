@@ -79,6 +79,13 @@ class BuilderTests {
 
 	@Test
 	void createDockerApiWithLogDockerLogDelegate() {
+		try {
+			Builder builder = new Builder(BuildLog.toSystemOut());
+			System.out.println("GRADLE DEBUG: " + builder.toString());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 		Builder builder = new Builder(BuildLog.toSystemOut());
 		assertThat(builder).extracting("docker")
 			.extracting("system")
