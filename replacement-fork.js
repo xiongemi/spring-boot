@@ -51,6 +51,7 @@ class ForkedProcessTaskRunner {
                 });
                 this.processes.add(p);
                 p.once('exit', (code, signal) => {
+                    console.log('Batch process exited');
                     this.processes.delete(p);
                     if (code === null)
                         code = (0, exit_codes_1.signalToCode)(signal);
@@ -63,6 +64,8 @@ class ForkedProcessTaskRunner {
                         case batch_messages_1.BatchMessageType.CompleteBatchExecution: {
                             res(message.results);
                             this.finsihedBatchProcesses.add(p);
+                            p.kill();
+                            console.log('Batch process finished');
                             break;
                         }
                         case batch_messages_1.BatchMessageType.RunTasks: {
@@ -323,12 +326,8 @@ class ForkedProcessTaskRunner {
                 this.pseudoTerminal.sendMessageToChildren(message);
             }
             this.processes.forEach((p) => {
-                if (this.finsihedBatchProcesses.has(p)) {
-                    p.kill();
-                    return;
-                }
                 if ('connected' in p) {
-                    if (p.connected) {
+                    if (p.connected && this.finsihedBatchProcesses.has(p) === false) {
                         p.send(message);
                     }
                     else {
