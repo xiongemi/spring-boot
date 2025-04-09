@@ -6,14 +6,18 @@
       "options": {
         "testTargetName": "test",
         "classesTargetName": "classes",
-        "buildTargetName": "build",
-        "ciTargetName": "ci"
+        "buildTargetName": "build"
       }
     }
   ],
   "namedInputs": {
-    "default": ["{projectRoot}/**/*"],
-    "production": ["default", "!{projectRoot}/src/test/**/*"]
+    "default": [
+      "{projectRoot}/**/*"
+    ],
+    "production": [
+      "default",
+      "!{projectRoot}/src/test/**/*"
+    ]
   },
   "nxCloudUrl": "https://snapshot.nx.app",
   "nxCloudId": "67dad8ae45125407e384edab"
