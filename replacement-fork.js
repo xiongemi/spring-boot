@@ -21,11 +21,13 @@ class ForkedProcessTaskRunner {
         this.verbose = process.env.NX_VERBOSE_LOGGING === 'true';
         this.addedMessageListener = false;
         this.processes = new Set();
+        this.finsihedBatchProcesses = new Set();
         this.pseudoTerminal = pseudo_terminal_1.PseudoTerminal.isSupported()
             ? (0, pseudo_terminal_1.getPseudoTerminal)()
             : null;
     }
     async init() {
+        console.log('fork process task runner init');
         if (this.pseudoTerminal) {
             await this.pseudoTerminal.init();
         }
@@ -60,10 +62,7 @@ class ForkedProcessTaskRunner {
                     switch (message.type) {
                         case batch_messages_1.BatchMessageType.CompleteBatchExecution: {
                             res(message.results);
-                            break;
-                        }
-                        case batch_messages_1.BatchMessageType.Performance: {
-                            // performance.measure(`run-batch`, message.start.name, message.end.name);
+                            this.finsihedBatchProcesses.add(p);
                             break;
                         }
                         case batch_messages_1.BatchMessageType.RunTasks: {
@@ -318,11 +317,16 @@ class ForkedProcessTaskRunner {
             });
         }
         const messageLisnter = (message) => {
+            console.log('message received', message);
             // this.publisher.publish(message.toString());
             if (this.pseudoTerminal) {
                 this.pseudoTerminal.sendMessageToChildren(message);
             }
             this.processes.forEach((p) => {
+                if (this.finsihedBatchProcesses.has(p)) {
+                    p.kill();
+                    return;
+                }
                 if ('connected' in p) {
                     if (p.connected) {
                         p.send(message);
@@ -332,6 +336,7 @@ class ForkedProcessTaskRunner {
                     }
                 }
             });
+            this.finsihedBatchProcesses = new Set();
         };
         // When the nx process gets a message, it will be sent into the task's process
         if (!this.addedMessageListener) {
