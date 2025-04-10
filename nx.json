@@ -1,12 +1,13 @@
 {
-  "bustCache": 1,
+  "bustCache": 2,
   "plugins": [
     {
       "plugin": "@nx/gradle",
       "options": {
         "testTargetName": "test",
         "classesTargetName": "classes",
-        "buildTargetName": "build"
+        "buildTargetName": "build",
+        "ciTargetName": "ci"
       }
     }
   ],

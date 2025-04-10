@@ -63,8 +63,8 @@ class ForkedProcessTaskRunner {
                     switch (message.type) {
                         case batch_messages_1.BatchMessageType.CompleteBatchExecution: {
                             res(message.results);
-                            this.finsihedBatchProcesses.add(p);
-                            p.kill();
+                            // this.finsihedBatchProcesses.add(p);
+                            // p.kill();
                             console.log('Batch process finished');
                             break;
                         }
