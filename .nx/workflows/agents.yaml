@@ -2,6 +2,10 @@ launch-templates:
   linux-extra-large-plus-jvm:
     resource-class: 'docker_linux_amd64/extra_large+'
     image: 'ubuntu22.04-node20.11-v10'
+    env: 
+      DOCKER_HOST: ""
+      SERVICES_HOST: ""
+      NX_CLOUD_USE_BATCHING: true
     init-steps:
       - name: java version
         script: java -version
