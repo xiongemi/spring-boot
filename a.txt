@@ -1,0 +1,457 @@
+Time for 'loading dotenv files' 0.40016599999995606
+Time for 'workspace context init' 5.538416999999981
+Time for 'code-loading' 92.26325000000003
+Time for 'plugin worker 21004 code loading' 2.202375
+Time for 'plugin worker 21006 code loading' 2.196707999999999
+Time for 'plugin worker 21007 code loading' 2.4734160000000003
+Time for 'plugin worker 21005 code loading' 2.0587909999999994
+Time for 'Load Nx Plugin: /Users/emily/code/tmp/spring-boot/node_modules/nx/src/plugins/package-json' 126.51433299999997
+Time for 'Load Nx Plugin: /Users/emily/code/tmp/spring-boot/node_modules/nx/src/plugins/project-json/build-nodes/project-json' 126.959292
+Time for 'loadDefaultNxPlugins' 133.19349999999997
+Time for 'Load Nx Plugin: /Users/emily/code/tmp/spring-boot/node_modules/nx/src/plugins/js' 133.11124999999993
+Time for 'loadSpecifiedNxPlugins' 159.19491699999992
+Time for 'Load Nx Plugin: @nx/gradle' 159.14583399999992
+Time for 'nx/core/project-json:createNodes' 0.20604100000002745
+Time for 'nx/core/package-json:createNodes' 0.3745000000000118
+Time for 'nx/js/dependencies-and-lockfile:createNodes' 2.090667000000053
+Time for '@nx/gradle:createNodes' 868.8154999999999
+Time for 'workspace context init' 0.9280830000000151
+Time for 'build-project-configs' 1355.9811249999998
+Time for 'createNodes:merge' 84.62795800000004
+Time for 'native-file-deps' 0.0014590000000680448
+Time for 'get-workspace-files' 11.1237500000002
+Time for 'get-all-workspace-files' 10.991874999999709
+Time for 'read cache' 4.864583000000039
+Time for 'build typescript dependencies' 0.7262089999999262
+Time for 'nx/js/dependencies-and-lockfile:createDependencies' 208.4565419999999
+[NX CLOUD] Verifying current cloud bundle
+[NX CLOUD] A local bundle currently exists:  {
+  version: '2504.24.4',
+  fullPath: '/Users/emily/code/tmp/spring-boot/.nx/cache/cloud/2504.24.4'
+}
+[NX CLOUD] Last verification was within the past 30 minutes, will not verify this time
+[NX CLOUD] Done:  /Users/emily/code/tmp/spring-boot/.nx/cache/cloud/2504.24.4
+
+ NX   --skip-nx-cache disables the connection to Nx Cloud for the current run.
+
+The remote cache will not be read from or written to during this run.
+
+
+ NX   Running target intTest-ci--EmbeddedServletContainerJarDevelopmentIntegrationTests for project spring-boot-server-tests and 189 tasks it depends on:
+
+
+[NX CLOUD] Verifying current cloud bundle
+[NX CLOUD] A local bundle currently exists:  {
+  version: '2504.24.4',
+  fullPath: '/Users/emily/code/tmp/spring-boot/.nx/cache/cloud/2504.24.4'
+}
+[NX CLOUD] Last verification was within the past 30 minutes, will not verify this time
+[NX CLOUD] Done:  /Users/emily/code/tmp/spring-boot/.nx/cache/cloud/2504.24.4
+
+ NX   Running 190 tasks with @nx/gradle:gradlew
+
+Time for 'create-project-graph-async' 2127.498917
+Time for 'create-project-graph-async >> retrieve-project-configurations' 1523.374542
+Time for 'create-project-graph-async >> retrieve-workspace-files' 22.224957999999788
+Time for 'create-project-graph-async >> build-project-graph-using-project-file-map' 378.28499999999985
+Time for 'createDependencies' 356.7886669999998
+Time for '@nx/gradle:createDependencies' 356.6631669999997
+Time for 'createMetadata' 0.044875000000047294
+Time for 'write cache' 203.33424999999988
+Time for 'preTasksExecution' 0.11979100000007747
+Time for 'hashMultipleTasks' 113.87608300000011
+Running gradlew batch with args: 
+
+[0m[7m[1m[36m NX [39m[22m[27m[0m  Running gradlew batch with args: 
+
+spring-boot-test-support:compileJava
+spring-boot:syncJavaTemplates
+spring-boot:checkKotlinGradlePluginConfigurationErrors
+spring-boot:compileKotlin
+spring-boot-configuration-processor:compileJava
+spring-boot-configuration-processor:processResources
+spring-boot-configuration-processor:classes
+spring-boot-configuration-processor:extractLegalResources
+spring-boot-configuration-processor:jar
+spring-boot:processResources
+spring-boot:compileJava
+spring-boot:classes
+spring-boot:javadoc
+spring-boot-autoconfigure-processor:compileJava
+spring-boot-autoconfigure-processor:processResources
+spring-boot-autoconfigure-processor:classes
+spring-boot-autoconfigure-processor:extractLegalResources
+spring-boot-autoconfigure-processor:jar
+spring-boot-autoconfigure:processResources
+spring-boot-autoconfigure:compileJava
+spring-boot-autoconfigure:classes
+spring-boot-autoconfigure:javadoc
+spring-boot-starter-logging:compileJava
+spring-boot-starter:compileJava
+spring-boot-starter-json:compileJava
+spring-boot-test:checkKotlinGradlePluginConfigurationErrors
+spring-boot-test:compileKotlin
+spring-boot-test:compileJava
+spring-boot-test-autoconfigure:compileJava
+spring-boot-starter-test:compileJava
+spring-boot-server-tests:compileJava
+spring-boot-server-tests:processResources
+spring-boot-server-tests:classes
+spring-boot-server-tests:compileIntTestJava
+spring-boot-server-tests:processIntTestResources
+spring-boot-server-tests:intTestClasses
+spring-boot-test-support:processResources
+spring-boot-test-support:classes
+spring-boot-test-support:extractLegalResources
+spring-boot-test-support:jar
+spring-boot-starter-test:processResources
+spring-boot-starter-test:classes
+spring-boot-starter-test:extractLegalResources
+spring-boot-starter-test:jar
+spring-boot-starter:processResources
+spring-boot-starter:classes
+spring-boot-starter:javadoc
+spring-boot-starter:extractLegalResources
+spring-boot-starter:jar
+spring-boot-starter:sourcesJar
+spring-boot-starter:javadocJar
+spring-boot-starter:generateMetadataFileForMavenPublication
+spring-boot-test-autoconfigure:processResources
+spring-boot-test-autoconfigure:classes
+spring-boot-test-autoconfigure:extractLegalResources
+spring-boot-test-autoconfigure:jar
+spring-boot-test:processResources
+spring-boot-test:classes
+spring-boot-test:extractLegalResources
+spring-boot-test:jar
+spring-boot-autoconfigure:extractLegalResources
+spring-boot-autoconfigure:jar
+spring-boot-autoconfigure:javadocJar
+spring-boot-autoconfigure:sourcesJar
+spring-boot-autoconfigure:generateMetadataFileForMavenPublication
+spring-boot:extractLegalResources
+spring-boot:jar
+spring-boot:sourcesJar
+spring-boot:javadocJar
+spring-boot:generateMetadataFileForMavenPublication
+spring-boot-starter-logging:processResources
+spring-boot-starter-logging:classes
+spring-boot-starter-logging:javadoc
+spring-boot-starter-logging:extractLegalResources
+spring-boot-starter-logging:jar
+spring-boot-starter-logging:sourcesJar
+spring-boot-starter-logging:javadocJar
+spring-boot-starter-logging:generateMetadataFileForMavenPublication
+spring-boot-dependencies:generatePomFileForMavenPublication
+spring-boot-dependencies:generateMetadataFileForMavenPublication
+spring-boot-dependencies:publishMavenPublicationToProjectRepository
+spring-boot-gradle-plugin:extractLegalResources
+spring-boot-gradle-plugin:sourcesJar
+spring-boot-buildpack-platform:compileJava
+spring-boot-loader-tools:compileJava
+spring-boot-gradle-plugin:compileJava
+spring-boot-gradle-plugin:pluginDescriptors
+spring-boot-gradle-plugin:processResources
+spring-boot-gradle-plugin:classes
+spring-boot-gradle-plugin:jar
+spring-boot-gradle-plugin:javadoc
+spring-boot-gradle-plugin:javadocJar
+spring-boot-gradle-plugin:generateMetadataFileForPluginMavenPublication
+spring-boot-gradle-plugin:generatePomFileForPluginMavenPublication
+spring-boot-gradle-plugin:publishPluginMavenPublicationToProjectRepository
+spring-boot-starter-json:extractLegalResources
+spring-boot-starter-json:sourcesJar
+spring-boot-starter-json:processResources
+spring-boot-starter-json:classes
+spring-boot-starter-json:jar
+spring-boot-starter-json:javadoc
+spring-boot-starter-json:javadocJar
+spring-boot-starter-json:generateMetadataFileForMavenPublication
+spring-boot-starter-json:generatePomFileForMavenPublication
+spring-boot-starter-json:publishMavenPublicationToProjectRepository
+spring-boot-starter:generatePomFileForMavenPublication
+spring-boot-starter:publishMavenPublicationToProjectRepository
+spring-boot-starter-jetty:compileJava
+spring-boot-starter-jetty:processResources
+spring-boot-starter-jetty:classes
+spring-boot-starter-jetty:javadoc
+spring-boot-starter-jetty:extractLegalResources
+spring-boot-starter-jetty:jar
+spring-boot-starter-jetty:javadocJar
+spring-boot-starter-jetty:sourcesJar
+spring-boot-starter-jetty:generateMetadataFileForMavenPublication
+spring-boot-starter-jetty:generatePomFileForMavenPublication
+spring-boot-starter-jetty:publishMavenPublicationToProjectRepository
+spring-boot-starter-parent:generatePomFileForMavenPublication
+spring-boot-starter-parent:publishMavenPublicationToProjectRepository
+spring-boot-starter-tomcat:extractLegalResources
+spring-boot-starter-tomcat:sourcesJar
+spring-boot-starter-tomcat:compileJava
+spring-boot-starter-tomcat:processResources
+spring-boot-starter-tomcat:classes
+spring-boot-starter-tomcat:javadoc
+spring-boot-starter-tomcat:javadocJar
+spring-boot-starter-tomcat:jar
+spring-boot-starter-tomcat:generateMetadataFileForMavenPublication
+spring-boot-starter-tomcat:generatePomFileForMavenPublication
+spring-boot-starter-tomcat:publishMavenPublicationToProjectRepository
+spring-boot-starter-undertow:compileJava
+spring-boot-starter-undertow:processResources
+spring-boot-starter-undertow:classes
+spring-boot-starter-undertow:javadoc
+spring-boot-starter-undertow:extractLegalResources
+spring-boot-starter-undertow:jar
+spring-boot-starter-undertow:sourcesJar
+spring-boot-starter-undertow:javadocJar
+spring-boot-starter-undertow:generateMetadataFileForMavenPublication
+spring-boot-starter-undertow:generatePomFileForMavenPublication
+spring-boot-starter-undertow:publishMavenPublicationToProjectRepository
+spring-boot-buildpack-platform:extractLegalResources
+spring-boot-buildpack-platform:sourcesJar
+spring-boot-buildpack-platform:processResources
+spring-boot-buildpack-platform:classes
+spring-boot-buildpack-platform:jar
+spring-boot-buildpack-platform:javadoc
+spring-boot-buildpack-platform:javadocJar
+spring-boot-buildpack-platform:generateMetadataFileForMavenPublication
+spring-boot-buildpack-platform:generatePomFileForMavenPublication
+spring-boot-buildpack-platform:publishMavenPublicationToProjectRepository
+spring-boot-loader-tools:extractLegalResources
+spring-boot-loader-tools:sourcesJar
+spring-boot-loader:compileJava
+spring-boot-jarmode-tools:compileJava
+spring-boot-jarmode-tools:processResources
+spring-boot-jarmode-tools:classes
+spring-boot-jarmode-tools:extractLegalResources
+spring-boot-jarmode-tools:jar
+spring-boot-loader-tools:toolsJar
+spring-boot-loader:processResources
+spring-boot-loader:classes
+spring-boot-loader:extractLegalResources
+spring-boot-loader:jar
+spring-boot-loader-tools:reproducibleLoaderJar
+spring-boot-loader-classic:compileJava
+spring-boot-loader-classic:processResources
+spring-boot-loader-classic:classes
+spring-boot-loader-classic:extractLegalResources
+spring-boot-loader-classic:jar
+spring-boot-loader-tools:reproducibleLoaderClassicJar
+spring-boot-loader-tools:processResources
+spring-boot-loader-tools:classes
+spring-boot-loader-tools:javadoc
+spring-boot-loader-tools:javadocJar
+spring-boot-loader-tools:jar
+spring-boot-loader-tools:generateMetadataFileForMavenPublication
+spring-boot-loader-tools:generatePomFileForMavenPublication
+spring-boot-loader-tools:publishMavenPublicationToProjectRepository
+spring-boot-autoconfigure:generatePomFileForMavenPublication
+spring-boot-autoconfigure:publishMavenPublicationToProjectRepository
+spring-boot:generatePomFileForMavenPublication
+spring-boot:publishMavenPublicationToProjectRepository
+spring-boot-starter-logging:generatePomFileForMavenPublication
+spring-boot-starter-logging:publishMavenPublicationToProjectRepository
+spring-boot-server-tests:syncTestRepository
+spring-boot-server-tests:syncAppSource
+spring-boot-server-tests:buildApps
+spring-boot-server-tests:intTest-ci--EmbeddedServletContainerJarDevelopmentIntegrationTests
+
+Time for 'gradlew-batch' [33m68912.10837500001[39m
+
+
+
+ NX   Successfully ran target intTest-ci--EmbeddedServletContainerJarDevelopmentIntegrationTests for project spring-boot-server-tests and 189 tasks it depends on
+
+
+Task Execution Timings:
+{
+  "spring-boot-test-support:compileJava": 1802,
+  "spring-boot:syncJavaTemplates": 7,
+  "spring-boot:checkKotlinGradlePluginConfigurationErrors": 1,
+  "spring-boot:compileKotlin": 6213,
+  "spring-boot-configuration-processor:compileJava": 616,
+  "spring-boot-configuration-processor:processResources": 4,
+  "spring-boot-configuration-processor:classes": 1,
+  "spring-boot-configuration-processor:extractLegalResources": 9,
+  "spring-boot-configuration-processor:jar": 20,
+  "spring-boot:processResources": 12,
+  "spring-boot:compileJava": 2634,
+  "spring-boot:classes": 3,
+  "spring-boot:javadoc": 5152,
+  "spring-boot-autoconfigure-processor:compileJava": 154,
+  "spring-boot-autoconfigure-processor:processResources": 18,
+  "spring-boot-autoconfigure-processor:classes": 8,
+  "spring-boot-autoconfigure-processor:extractLegalResources": 9,
+  "spring-boot-autoconfigure-processor:jar": 20,
+  "spring-boot-autoconfigure:processResources": 15,
+  "spring-boot-autoconfigure:compileJava": 4529,
+  "spring-boot-autoconfigure:classes": 1,
+  "spring-boot-autoconfigure:javadoc": 4480,
+  "spring-boot-starter-logging:compileJava": 11,
+  "spring-boot-starter:compileJava": 27,
+  "spring-boot-starter-json:compileJava": 5,
+  "spring-boot-test:checkKotlinGradlePluginConfigurationErrors": 5,
+  "spring-boot-test:compileKotlin": 1759,
+  "spring-boot-test:compileJava": 1363,
+  "spring-boot-test-autoconfigure:compileJava": 1339,
+  "spring-boot-starter-test:compileJava": 12,
+  "spring-boot-server-tests:compileJava": 9,
+  "spring-boot-server-tests:processResources": 9,
+  "spring-boot-server-tests:classes": 1,
+  "spring-boot-server-tests:compileIntTestJava": 321,
+  "spring-boot-server-tests:processIntTestResources": 1,
+  "spring-boot-server-tests:intTestClasses": 0,
+  "spring-boot-test-support:processResources": 1,
+  "spring-boot-test-support:classes": 1,
+  "spring-boot-test-support:extractLegalResources": 3,
+  "spring-boot-test-support:jar": 20,
+  "spring-boot-starter-test:processResources": 7,
+  "spring-boot-starter-test:classes": 3,
+  "spring-boot-starter-test:extractLegalResources": 15,
+  "spring-boot-starter-test:jar": 17,
+  "spring-boot-starter:processResources": 7,
+  "spring-boot-starter:classes": 2,
+  "spring-boot-starter:javadoc": 3,
+  "spring-boot-starter:extractLegalResources": 14,
+  "spring-boot-starter:jar": 4,
+  "spring-boot-starter:sourcesJar": 6,
+  "spring-boot-starter:javadocJar": 5,
+  "spring-boot-starter:generateMetadataFileForMavenPublication": 5047,
+  "spring-boot-test-autoconfigure:processResources": 69,
+  "spring-boot-test-autoconfigure:classes": 2,
+  "spring-boot-test-autoconfigure:extractLegalResources": 6,
+  "spring-boot-test-autoconfigure:jar": 67,
+  "spring-boot-test:processResources": 8,
+  "spring-boot-test:classes": 4,
+  "spring-boot-test:extractLegalResources": 14,
+  "spring-boot-test:jar": 35,
+  "spring-boot-autoconfigure:extractLegalResources": 8,
+  "spring-boot-autoconfigure:jar": 181,
+  "spring-boot-autoconfigure:javadocJar": 241,
+  "spring-boot-autoconfigure:sourcesJar": 312,
+  "spring-boot-autoconfigure:generateMetadataFileForMavenPublication": 70,
+  "spring-boot:extractLegalResources": 5,
+  "spring-boot:jar": 176,
+  "spring-boot:sourcesJar": 5,
+  "spring-boot:javadocJar": 251,
+  "spring-boot:generateMetadataFileForMavenPublication": 66,
+  "spring-boot-starter-logging:processResources": 2,
+  "spring-boot-starter-logging:classes": 2,
+  "spring-boot-starter-logging:javadoc": 2,
+  "spring-boot-starter-logging:extractLegalResources": 9,
+  "spring-boot-starter-logging:jar": 5,
+  "spring-boot-starter-logging:sourcesJar": 7,
+  "spring-boot-starter-logging:javadocJar": 12,
+  "spring-boot-starter-logging:generateMetadataFileForMavenPublication": 131,
+  "spring-boot-dependencies:generatePomFileForMavenPublication": 77,
+  "spring-boot-dependencies:generateMetadataFileForMavenPublication": 1,
+  "spring-boot-dependencies:publishMavenPublicationToProjectRepository": 47,
+  "spring-boot-gradle-plugin:extractLegalResources": 6,
+  "spring-boot-gradle-plugin:sourcesJar": 45,
+  "spring-boot-buildpack-platform:compileJava": 1779,
+  "spring-boot-loader-tools:compileJava": 818,
+  "spring-boot-gradle-plugin:compileJava": 676,
+  "spring-boot-gradle-plugin:pluginDescriptors": 3,
+  "spring-boot-gradle-plugin:processResources": 7,
+  "spring-boot-gradle-plugin:classes": 2,
+  "spring-boot-gradle-plugin:jar": 32,
+  "spring-boot-gradle-plugin:javadoc": 2133,
+  "spring-boot-gradle-plugin:javadocJar": 33,
+  "spring-boot-gradle-plugin:generateMetadataFileForPluginMavenPublication": 10,
+  "spring-boot-gradle-plugin:generatePomFileForPluginMavenPublication": 2756,
+  "spring-boot-gradle-plugin:publishPluginMavenPublicationToProjectRepository": 23,
+  "spring-boot-starter-json:extractLegalResources": 67,
+  "spring-boot-starter-json:sourcesJar": 5,
+  "spring-boot-starter-json:processResources": 5,
+  "spring-boot-starter-json:classes": 2,
+  "spring-boot-starter-json:jar": 4,
+  "spring-boot-starter-json:javadoc": 3,
+  "spring-boot-starter-json:javadocJar": 4,
+  "spring-boot-starter-json:generateMetadataFileForMavenPublication": 12,
+  "spring-boot-starter-json:generatePomFileForMavenPublication": 267,
+  "spring-boot-starter-json:publishMavenPublicationToProjectRepository": 24,
+  "spring-boot-starter:generatePomFileForMavenPublication": 1794,
+  "spring-boot-starter:publishMavenPublicationToProjectRepository": 13,
+  "spring-boot-starter-jetty:compileJava": 2,
+  "spring-boot-starter-jetty:processResources": 2,
+  "spring-boot-starter-jetty:classes": 1,
+  "spring-boot-starter-jetty:javadoc": 2,
+  "spring-boot-starter-jetty:extractLegalResources": 5,
+  "spring-boot-starter-jetty:jar": 5,
+  "spring-boot-starter-jetty:javadocJar": 19,
+  "spring-boot-starter-jetty:sourcesJar": 8,
+  "spring-boot-starter-jetty:generateMetadataFileForMavenPublication": 120,
+  "spring-boot-starter-jetty:generatePomFileForMavenPublication": 7,
+  "spring-boot-starter-jetty:publishMavenPublicationToProjectRepository": 27,
+  "spring-boot-starter-parent:generatePomFileForMavenPublication": 205,
+  "spring-boot-starter-parent:publishMavenPublicationToProjectRepository": 23,
+  "spring-boot-starter-tomcat:extractLegalResources": 4,
+  "spring-boot-starter-tomcat:sourcesJar": 156,
+  "spring-boot-starter-tomcat:compileJava": 7,
+  "spring-boot-starter-tomcat:processResources": 1,
+  "spring-boot-starter-tomcat:classes": 1,
+  "spring-boot-starter-tomcat:javadoc": 2,
+  "spring-boot-starter-tomcat:javadocJar": 4,
+  "spring-boot-starter-tomcat:jar": 23,
+  "spring-boot-starter-tomcat:generateMetadataFileForMavenPublication": 20,
+  "spring-boot-starter-tomcat:generatePomFileForMavenPublication": 3,
+  "spring-boot-starter-tomcat:publishMavenPublicationToProjectRepository": 27,
+  "spring-boot-starter-undertow:compileJava": 3,
+  "spring-boot-starter-undertow:processResources": 1,
+  "spring-boot-starter-undertow:classes": 2,
+  "spring-boot-starter-undertow:javadoc": 1,
+  "spring-boot-starter-undertow:extractLegalResources": 4,
+  "spring-boot-starter-undertow:jar": 4,
+  "spring-boot-starter-undertow:sourcesJar": 4,
+  "spring-boot-starter-undertow:javadocJar": 6,
+  "spring-boot-starter-undertow:generateMetadataFileForMavenPublication": 15,
+  "spring-boot-starter-undertow:generatePomFileForMavenPublication": 2,
+  "spring-boot-starter-undertow:publishMavenPublicationToProjectRepository": 24,
+  "spring-boot-buildpack-platform:extractLegalResources": 4,
+  "spring-boot-buildpack-platform:sourcesJar": 4,
+  "spring-boot-buildpack-platform:processResources": 7,
+  "spring-boot-buildpack-platform:classes": 1,
+  "spring-boot-buildpack-platform:jar": 34,
+  "spring-boot-buildpack-platform:javadoc": 1839,
+  "spring-boot-buildpack-platform:javadocJar": 39,
+  "spring-boot-buildpack-platform:generateMetadataFileForMavenPublication": 22,
+  "spring-boot-buildpack-platform:generatePomFileForMavenPublication": 3,
+  "spring-boot-buildpack-platform:publishMavenPublicationToProjectRepository": 37,
+  "spring-boot-loader-tools:extractLegalResources": 38,
+  "spring-boot-loader-tools:sourcesJar": 39,
+  "spring-boot-loader:compileJava": 842,
+  "spring-boot-jarmode-tools:compileJava": 238,
+  "spring-boot-jarmode-tools:processResources": 8,
+  "spring-boot-jarmode-tools:classes": 2,
+  "spring-boot-jarmode-tools:extractLegalResources": 11,
+  "spring-boot-jarmode-tools:jar": 18,
+  "spring-boot-loader-tools:toolsJar": 9,
+  "spring-boot-loader:processResources": 4,
+  "spring-boot-loader:classes": 1,
+  "spring-boot-loader:extractLegalResources": 6,
+  "spring-boot-loader:jar": 33,
+  "spring-boot-loader-tools:reproducibleLoaderJar": 26,
+  "spring-boot-loader-classic:compileJava": 656,
+  "spring-boot-loader-classic:processResources": 1,
+  "spring-boot-loader-classic:classes": 1,
+  "spring-boot-loader-classic:extractLegalResources": 4,
+  "spring-boot-loader-classic:jar": 22,
+  "spring-boot-loader-tools:reproducibleLoaderClassicJar": 52,
+  "spring-boot-loader-tools:processResources": 7,
+  "spring-boot-loader-tools:classes": 1,
+  "spring-boot-loader-tools:javadoc": 1255,
+  "spring-boot-loader-tools:javadocJar": 35,
+  "spring-boot-loader-tools:jar": 26,
+  "spring-boot-loader-tools:generateMetadataFileForMavenPublication": 19,
+  "spring-boot-loader-tools:generatePomFileForMavenPublication": 29,
+  "spring-boot-loader-tools:publishMavenPublicationToProjectRepository": 27,
+  "spring-boot-autoconfigure:generatePomFileForMavenPublication": 1489,
+  "spring-boot-autoconfigure:publishMavenPublicationToProjectRepository": 111,
+  "spring-boot:generatePomFileForMavenPublication": 45,
+  "spring-boot:publishMavenPublicationToProjectRepository": 101,
+  "spring-boot-starter-logging:generatePomFileForMavenPublication": 2,
+  "spring-boot-starter-logging:publishMavenPublicationToProjectRepository": 27,
+  "spring-boot-server-tests:syncTestRepository": 319,
+  "spring-boot-server-tests:syncAppSource": 519,
+  "spring-boot-server-tests:buildApps": 1506,
+  "spring-boot-server-tests:intTest-ci--EmbeddedServletContainerJarDevelopmentIntegrationTests": 16032
+}
