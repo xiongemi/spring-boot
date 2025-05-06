@@ -384,3 +384,11 @@ dokkatoo {
 		includes.from("src/docs/dokkatoo/dokka-overview.md")
 	}
 }
+
+tasks.named("dokkatooGeneratePublicationHtml") {
+    dependsOn("dokkatooGenerateModuleHtml")
+}
+
+dokkatooGeneratePublicationHtml {
+	dependsOn dokkatooGenerateModuleHtml
+}
