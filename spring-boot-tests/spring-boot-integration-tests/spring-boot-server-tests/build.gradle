@@ -36,6 +36,7 @@ tasks.register("syncTestRepository", Sync) {
 }
 
 tasks.register("syncAppSource", org.springframework.boot.build.SyncAppSource) {
+	dependsOn compileJava, processResources
 	sourceDirectory = file("spring-boot-server-tests-app")
 	destinationDirectory = file(layout.buildDirectory.dir("spring-boot-server-tests-app"))
 }
