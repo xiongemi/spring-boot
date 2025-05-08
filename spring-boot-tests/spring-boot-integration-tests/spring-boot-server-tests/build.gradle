@@ -1,6 +1,7 @@
 plugins {
 	id "java"
 	id "org.springframework.boot.integration-test"
+	id "dev.nx.gradle.project-graph" version "+"
 }
 
 description = "Spring Boot Server Integration Tests"
@@ -53,6 +54,16 @@ tasks.register("buildApps", GradleBuild) {
 		"undertowBootJar",
 		"undertowBootWar"
 	]
+	// Manually declare expected output files
+    outputs.files(
+			layout.buildDirectory.file("spring-boot-server-tests-app/build/libs/spring-boot-server-tests-app-jetty.jar"),
+			layout.buildDirectory.file("spring-boot-server-tests-app/build/libs/spring-boot-server-tests-app-jetty.war"),
+			layout.buildDirectory.file("spring-boot-server-tests-app/build/libs/spring-boot-server-tests-app-resources.jar"),
+			layout.buildDirectory.file("spring-boot-server-tests-app/build/libs/spring-boot-server-tests-app-tomcat.jar"),
+			layout.buildDirectory.file("spring-boot-server-tests-app/build/libs/spring-boot-server-tests-app-tomcat.war"),
+			layout.buildDirectory.file("spring-boot-server-tests-app/build/libs/spring-boot-server-tests-app-undertow.jar"),
+			layout.buildDirectory.file("spring-boot-server-tests-app/build/libs/spring-boot-server-tests-app-undertow.war")
+    )
 }
 
 intTest {
