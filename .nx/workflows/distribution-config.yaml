@@ -1,3 +1,5 @@
+distribute-on:
+  default: 5 linux-extra-large-plus-jvm
 assignment-rules:
   - projects:
       - "*"
