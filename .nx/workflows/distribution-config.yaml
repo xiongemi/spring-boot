@@ -1,0 +1,5 @@
+assignment-rules:
+  - projects:
+      - "*"
+    run-on:
+      - agent: "linux-extra-large-plus-jvm"
