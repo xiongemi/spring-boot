@@ -1,7 +1,6 @@
 plugins {
 	id "java"
 	id "org.springframework.boot.integration-test"
-	id "dev.nx.gradle.project-graph" version "+"
 }
 
 description = "Spring Boot Server Integration Tests"
