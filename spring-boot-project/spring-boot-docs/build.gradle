@@ -320,9 +320,9 @@ antoraContributions {
 			from(aggregatedJavadoc) {
 				into "java"
 			}
-			from(tasks.named("dokkatooGeneratePublicationHtml")) {
-				into "kotlin"
-			}
+//			from(tasks.named("dokkatooGeneratePublicationHtml")) {
+//				into "kotlin"
+//			}
 		}
 	}
 	'root' {
@@ -385,10 +385,10 @@ dokkatoo {
 	}
 }
 
-tasks.named("dokkatooGeneratePublicationHtml") {
-    dependsOn("dokkatooGenerateModuleHtml")
-}
-
-dokkatooGeneratePublicationHtml {
-	dependsOn dokkatooGenerateModuleHtml
-}
+//tasks.named("dokkatooGeneratePublicationHtml") {
+//    dependsOn("dokkatooGenerateModuleHtml")
+//}
+//
+//dokkatooGeneratePublicationHtml {
+//	dependsOn dokkatooGenerateModuleHtml
+//}
