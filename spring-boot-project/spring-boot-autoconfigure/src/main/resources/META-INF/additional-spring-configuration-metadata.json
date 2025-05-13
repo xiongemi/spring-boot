@@ -3242,24 +3242,36 @@
       "name": "spring.jpa.hibernate.ddl-auto",
       "values": [
         {
-          "value": "none",
-          "description": "Disable DDL handling."
-        },
-        {
-          "value": "validate",
-          "description": "Validate the schema, make no changes to the database."
-        },
-        {
-          "value": "update",
-          "description": "Update the schema if necessary."
-        },
-        {
           "value": "create",
           "description": "Create the schema and destroy previous data."
         },
         {
           "value": "create-drop",
           "description": "Create and then destroy the schema at the end of the session."
+        },
+        {
+          "value": "create-only",
+          "description": "Create the schema."
+        },
+        {
+          "value": "drop",
+          "description": "Drop the schema."
+        },
+        {
+          "value": "none",
+          "description": "Disable DDL handling."
+        },
+        {
+          "value": "truncate",
+          "description": "Truncate the tables in the schema."
+        },
+        {
+          "value": "update",
+          "description": "Update the schema if necessary."
+        },
+        {
+          "value": "validate",
+          "description": "Validate the schema, make no changes to the database."
         }
       ]
     },
@@ -3541,13 +3553,7 @@
         "name": "spring.datasource.hikari.credentials"
       },
       {
-        "name": "spring.datasource.hikari.data-source-properties"
-      },
-      {
         "name": "spring.datasource.hikari.exception-override"
-      },
-      {
-        "name": "spring.datasource.hikari.health-check-properties"
       },
       {
         "name": "spring.datasource.hikari.metrics-tracker-factory"
@@ -3556,22 +3562,10 @@
         "name": "spring.datasource.hikari.scheduled-executor"
       },
       {
-        "name": "spring.datasource.oracleucp.connection-factory-properties"
-      },
-      {
-        "name": "spring.datasource.oracleucp.connection-properties"
-      },
-      {
         "name": "spring.datasource.oracleucp.connection-wait-duration-in-millis"
       },
       {
         "name": "spring.datasource.oracleucp.hostname-resolver"
-      },
-      {
-        "name": "spring.datasource.oracleucp.pdb-roles"
-      },
-      {
-        "name": "spring.datasource.tomcat.db-properties"
       }
     ]
   }
