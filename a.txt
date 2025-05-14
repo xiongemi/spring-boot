@@ -1,0 +1,369 @@
+> Task :buildSrc:checkFormatMain
+> Task :buildSrc:checkFormatTest
+> Task :buildSrc:checkFormat
+> Task :buildSrc:compileJava
+> Task :buildSrc:compileGroovy NO-SOURCE
+> Task :buildSrc:pluginDescriptors
+> Task :buildSrc:processResources
+> Task :buildSrc:classes
+> Task :buildSrc:compileTestJava
+> Task :buildSrc:compileTestGroovy NO-SOURCE
+> Task :buildSrc:processTestResources
+> Task :buildSrc:testClasses
+> Task :buildSrc:pluginUnderTestMetadata
+> Task :buildSrc:checkstyleTest
+> Task :buildSrc:checkstyleMain
+> Task :buildSrc:test
+
+
+> Task :buildSrc:validatePlugins
+> Task :buildSrc:check
+> Task :buildSrc:jar
+
+> Configure project :spring-boot-project:spring-boot
+No 'hash' property was provided for project ':spring-boot-project:spring-boot'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-actuator
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-actuator'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-actuator'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-actuator-autoconfigure
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-actuator-autoconfigure'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-actuator-autoconfigure'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-autoconfigure
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-autoconfigure'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-autoconfigure'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-dependencies
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-dependencies'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-dependencies'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-devtools
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-devtools'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-devtools'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-docker-compose
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-docker-compose'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-docker-compose'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-docs
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-docs'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-docs'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-parent
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-parent'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-parent'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-test
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-test'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-test'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-test-autoconfigure
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-test-autoconfigure'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-test-autoconfigure'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-testcontainers
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-testcontainers'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-testcontainers'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-starters:spring-boot-starter
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-starters:spring-boot-starter-activemq
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-activemq'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-activemq'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-starters:spring-boot-starter-actuator
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-actuator'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-actuator'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-starters:spring-boot-starter-amqp
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-amqp'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-amqp'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-starters:spring-boot-starter-aop
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-aop'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-aop'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-starters:spring-boot-starter-artemis
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-artemis'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-artemis'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-starters:spring-boot-starter-batch
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-batch'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-batch'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-starters:spring-boot-starter-cache
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-cache'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-cache'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-starters:spring-boot-starter-data-cassandra
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-data-cassandra'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-data-cassandra'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-starters:spring-boot-starter-data-cassandra-reactive
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-data-cassandra-reactive'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-data-cassandra-reactive'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-starters:spring-boot-starter-data-couchbase
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-data-couchbase'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-data-couchbase'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-starters:spring-boot-starter-data-couchbase-reactive
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-data-couchbase-reactive'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-data-couchbase-reactive'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-starters:spring-boot-starter-data-elasticsearch
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-data-elasticsearch'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-data-elasticsearch'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-starters:spring-boot-starter-data-jdbc
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-data-jdbc'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-data-jdbc'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-starters:spring-boot-starter-data-jpa
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-data-jpa'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-data-jpa'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-starters:spring-boot-starter-data-ldap
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-data-ldap'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-data-ldap'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-starters:spring-boot-starter-data-mongodb
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-data-mongodb'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-data-mongodb'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-starters:spring-boot-starter-data-mongodb-reactive
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-data-mongodb-reactive'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-data-mongodb-reactive'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-starters:spring-boot-starter-data-neo4j
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-data-neo4j'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-data-neo4j'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-starters:spring-boot-starter-data-r2dbc
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-data-r2dbc'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-data-r2dbc'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-starters:spring-boot-starter-data-redis
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-data-redis'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-data-redis'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-starters:spring-boot-starter-data-redis-reactive
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-data-redis-reactive'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-data-redis-reactive'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-starters:spring-boot-starter-data-rest
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-data-rest'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-data-rest'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-starters:spring-boot-starter-freemarker
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-freemarker'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-freemarker'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-starters:spring-boot-starter-graphql
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-graphql'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-graphql'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-starters:spring-boot-starter-groovy-templates
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-groovy-templates'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-groovy-templates'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-starters:spring-boot-starter-hateoas
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-hateoas'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-hateoas'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-starters:spring-boot-starter-integration
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-integration'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-integration'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-starters:spring-boot-starter-jdbc
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-jdbc'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-jdbc'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-starters:spring-boot-starter-jersey
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-jersey'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-jersey'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-starters:spring-boot-starter-jetty
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-jetty'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-jetty'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-starters:spring-boot-starter-jooq
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-jooq'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-jooq'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-starters:spring-boot-starter-json
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-json'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-json'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-starters:spring-boot-starter-log4j2
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-log4j2'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-log4j2'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-starters:spring-boot-starter-logging
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-logging'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-logging'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-starters:spring-boot-starter-mail
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-mail'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-mail'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-starters:spring-boot-starter-mustache
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-mustache'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-mustache'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-starters:spring-boot-starter-oauth2-authorization-server
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-oauth2-authorization-server'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-oauth2-authorization-server'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-starters:spring-boot-starter-oauth2-client
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-oauth2-client'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-oauth2-client'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-starters:spring-boot-starter-oauth2-resource-server
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-oauth2-resource-server'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-oauth2-resource-server'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-starters:spring-boot-starter-parent
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-parent'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-parent'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-starters:spring-boot-starter-pulsar
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-pulsar'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-pulsar'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-starters:spring-boot-starter-pulsar-reactive
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-pulsar-reactive'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-pulsar-reactive'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-starters:spring-boot-starter-quartz
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-quartz'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-quartz'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-starters:spring-boot-starter-reactor-netty
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-reactor-netty'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-reactor-netty'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-starters:spring-boot-starter-rsocket
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-rsocket'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-rsocket'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-starters:spring-boot-starter-security
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-security'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-security'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-starters:spring-boot-starter-test
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-test'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-test'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-starters:spring-boot-starter-thymeleaf
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-thymeleaf'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-thymeleaf'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-starters:spring-boot-starter-tomcat
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-tomcat'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-tomcat'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-starters:spring-boot-starter-undertow
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-undertow'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-undertow'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-starters:spring-boot-starter-validation
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-validation'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-validation'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-starters:spring-boot-starter-web
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-web'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-web'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-starters:spring-boot-starter-web-services
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-web-services'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-web-services'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-starters:spring-boot-starter-webflux
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-webflux'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-webflux'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-starters:spring-boot-starter-websocket
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-websocket'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-starters:spring-boot-starter-websocket'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-tools:spring-boot-antlib
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-tools:spring-boot-antlib'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-tools:spring-boot-antlib'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-tools:spring-boot-autoconfigure-processor
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-tools:spring-boot-autoconfigure-processor'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-tools:spring-boot-autoconfigure-processor'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-tools:spring-boot-buildpack-platform
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-tools:spring-boot-buildpack-platform'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-tools:spring-boot-buildpack-platform'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-tools:spring-boot-cli
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-tools:spring-boot-cli'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-tools:spring-boot-cli'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-tools:spring-boot-configuration-metadata
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-tools:spring-boot-configuration-metadata'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-tools:spring-boot-configuration-metadata'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-tools:spring-boot-configuration-processor
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-tools:spring-boot-configuration-processor'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-tools:spring-boot-configuration-processor'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-tools:spring-boot-gradle-plugin
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-tools:spring-boot-gradle-plugin'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-tools:spring-boot-gradle-plugin'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-tools:spring-boot-jarmode-tools
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-tools:spring-boot-jarmode-tools'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-tools:spring-boot-jarmode-tools'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-tools:spring-boot-loader
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-tools:spring-boot-loader'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-tools:spring-boot-loader'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-tools:spring-boot-loader-classic
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-tools:spring-boot-loader-classic'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-tools:spring-boot-loader-classic'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-tools:spring-boot-loader-tools
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-tools:spring-boot-loader-tools'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-tools:spring-boot-loader-tools'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-tools:spring-boot-maven-plugin
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-tools:spring-boot-maven-plugin'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-tools:spring-boot-maven-plugin'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Configure project :spring-boot-project:spring-boot-tools:spring-boot-properties-migrator
+No 'hash' property was provided for project ':spring-boot-project:spring-boot-tools:spring-boot-properties-migrator'. Using default hash value: 'default-hash'
+No 'workspaceRoot' property was provided for project ':spring-boot-project:spring-boot-tools:spring-boot-properties-migrator'. Using default hash value: /Users/emily/code/tmp/spring-boot
+
+> Task :spring-boot-project:spring-boot-tools:spring-boot-test-support:compileJava
+> Task :spring-boot-project:spring-boot-tools:spring-boot-test-support:processResources NO-SOURCE
+> Task :spring-boot-project:spring-boot-tools:spring-boot-test-support:classes
+> Task :spring-boot-project:spring-boot-tools:spring-boot-test-support:extractLegalResources
+> Task :spring-boot-project:spring-boot-tools:spring-boot-test-support:jar
+> Task :spring-boot-project:spring-boot-tools:spring-boot-loader:compileJava
+> Task :spring-boot-project:spring-boot-tools:spring-boot-loader:processResources
+> Task :spring-boot-project:spring-boot-tools:spring-boot-loader:classes
+> Task :spring-boot-project:spring-boot-tools:spring-boot-loader:compileTestJava
+> Task :spring-boot-project:spring-boot-tools:spring-boot-loader:processTestResources
+> Task :spring-boot-project:spring-boot-tools:spring-boot-loader:testClasses
+> Task :spring-boot-project:spring-boot-tools:spring-boot-loader:test
+
+[Incubating] Problems report is available at: file:///Users/emily/code/tmp/spring-boot/build/reports/problems/problems-report.html
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.14/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 1m 16s
+21 actionable tasks: 21 executed
