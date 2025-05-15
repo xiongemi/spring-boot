@@ -180,3 +180,15 @@ tasks.named("dockerTest").configure {
 syncPluginDescriptorInputs {
 	dependsOn formatHelpMojoSource
 }
+
+tasks.withType(Test).configureEach {
+    maxParallelForks = Math.max(Runtime.runtime.availableProcessors(), 1)
+}
+
+generateHelpMojo {
+	enabled = false
+}
+
+generatePluginDescriptor {
+	enabled = false
+}
