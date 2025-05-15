@@ -176,3 +176,11 @@ tasks.named("generateAntoraPlaybook") {
 tasks.named("dockerTest").configure {
 	dependsOn tasks.named("prepareMavenBinaries")
 }
+
+syncPluginDescriptorInputs {
+	dependsOn formatHelpMojoSource
+}
+
+tasks.withType(Test).configureEach {
+    maxParallelForks = Math.max(Runtime.runtime.availableProcessors(), 1)
+}
