@@ -181,10 +181,10 @@ syncPluginDescriptorInputs {
 	dependsOn formatHelpMojoSource
 }
 
-antoraNpmInstall {
-	enabled = false
+tasks.named("antora") {
+    enabled = false
 }
 
-antora {
-	enabled = false
+tasks.named("antoraNpmInstall") {
+    enabled = false
 }
