@@ -180,3 +180,11 @@ tasks.named("dockerTest").configure {
 syncPluginDescriptorInputs {
 	dependsOn formatHelpMojoSource
 }
+
+antoraNpmInstall {
+	enabled = false
+}
+
+antora {
+	enabled = false
+}
