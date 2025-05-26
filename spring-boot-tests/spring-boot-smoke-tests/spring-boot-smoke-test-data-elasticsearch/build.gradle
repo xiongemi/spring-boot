@@ -18,5 +18,6 @@ dependencies {
 	dockerTestImplementation("org.testcontainers:elasticsearch")
 	dockerTestImplementation("org.testcontainers:testcontainers")
 
+	implementation(project(":spring-boot-project:spring-boot-starters:spring-boot-starter"))
 	implementation(project(":spring-boot-project:spring-boot-starters:spring-boot-starter-data-elasticsearch"))
 }

@@ -5,6 +5,7 @@ plugins {
 description = "Spring Boot web application type smoke test"
 
 dependencies {
+	implementation(project(":spring-boot-project:spring-boot-starters:spring-boot-starter"))
 	implementation(project(":spring-boot-project:spring-boot-starters:spring-boot-starter-web"))
 	implementation(project(":spring-boot-project:spring-boot-starters:spring-boot-starter-webflux"))
 
