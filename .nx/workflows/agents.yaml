@@ -28,6 +28,10 @@ launch-templates:
           key: 'package-lock.json|yarn.lock|pnpm-lock.yaml'
           paths: 'node_modules'
           base-branch: 'main'
+
+      - name: postinstall
+        script: npm run postinstall
+        
       - name: Restore Browser Binary Cache
         uses: 'nrwl/nx-cloud-workflows/v4/workflow-steps/cache/main.yaml'
         inputs:
