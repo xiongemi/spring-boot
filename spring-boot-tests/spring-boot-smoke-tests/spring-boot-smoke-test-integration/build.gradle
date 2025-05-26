@@ -7,6 +7,7 @@ description = "Spring Boot Integration smoke test"
 dependencies {
 	annotationProcessor(project(":spring-boot-project:spring-boot-tools:spring-boot-configuration-processor"))
 
+	implementation(project(":spring-boot-project:spring-boot-starters:spring-boot-starter"))
 	implementation(project(":spring-boot-project:spring-boot-starters:spring-boot-starter-integration"))
 	implementation("org.springframework.integration:spring-integration-file")
 	implementation("org.springframework.integration:spring-integration-jmx")

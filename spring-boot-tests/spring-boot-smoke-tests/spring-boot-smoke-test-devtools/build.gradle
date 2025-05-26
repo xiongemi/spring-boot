@@ -12,6 +12,7 @@ configurations {
 dependencies {
 	developmentOnly project(":spring-boot-project:spring-boot-devtools")
 
+	implementation(project(":spring-boot-project:spring-boot-starters:spring-boot-starter"))
 	implementation(project(":spring-boot-project:spring-boot-starters:spring-boot-starter-web"))
 
 	testImplementation(project(":spring-boot-project:spring-boot-starters:spring-boot-starter-test"))

@@ -5,6 +5,7 @@ plugins {
 description = "Spring Boot JUnit Vintage smoke test"
 
 dependencies {
+	implementation(project(":spring-boot-project:spring-boot-starters:spring-boot-starter"))
 	implementation(project(":spring-boot-project:spring-boot-starters:spring-boot-starter-web"))
 	testImplementation(project(":spring-boot-project:spring-boot-starters:spring-boot-starter-test"))
 	testImplementation("org.junit.vintage:junit-vintage-engine") {
@@ -13,7 +14,7 @@ dependencies {
 }
 
 test {
-	testLogging {
+	/* testLogging {
 		afterSuite { description, result ->
 			if (!description.parent) {
 				if (!result.testCount) {
@@ -21,7 +22,7 @@ test {
 				}
 			}
 		}
-	}
+	}*/
 	develocity {
 		predictiveTestSelection {
 			enabled = false
