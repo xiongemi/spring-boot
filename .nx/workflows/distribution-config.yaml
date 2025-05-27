@@ -3,7 +3,7 @@ distribute-on:
 
 assignment-rules:
   - targets:
-      - 'ciIntTest*'
+      - "*"
     run-on:
       - agent: linux-extra-large-plus-jvm
         parallelism: 1
