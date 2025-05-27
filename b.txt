@@ -1,0 +1,33 @@
+Waiting for graph construction in another process to complete
+[NX CLOUD] Verifying current cloud bundle
+[NX CLOUD] A local bundle currently exists:  {
+  version: '2505.27.1',
+  fullPath: '/Users/emily/code/tmp/spring-boot/.nx/cache/cloud/2505.27.1'
+}
+[NX CLOUD] Last verification was within the past 30 minutes, will not verify this time
+[NX CLOUD] Done:  /Users/emily/code/tmp/spring-boot/.nx/cache/cloud/2505.27.1
+
+ NX   --skip-nx-cache disables the connection to Nx Cloud for the current run.
+
+The remote cache will not be read from or written to during this run.
+
+
+ NX   Running target ci for project spring-boot-smoke-test-actuator and 116 tasks it depends on:
+
+
+[NX CLOUD] Verifying current cloud bundle
+[NX CLOUD] A local bundle currently exists:  {
+  version: '2505.27.1',
+  fullPath: '/Users/emily/code/tmp/spring-boot/.nx/cache/cloud/2505.27.1'
+}
+[NX CLOUD] Last verification was within the past 30 minutes, will not verify this time
+[NX CLOUD] Done:  /Users/emily/code/tmp/spring-boot/.nx/cache/cloud/2505.27.1
+
+ NX   Running 116 tasks with @nx/gradle:gradle
+
+
+
+
+ NX   Successfully ran target ci for project spring-boot-smoke-test-actuator and 116 tasks it depends on
+
+
