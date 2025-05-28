@@ -2,6 +2,7 @@ launch-templates:
   linux-extra-large-plus-jvm:
     env:
       DOCKER_HOST: ""
+      NX_CLOUD_FORCE_USE_EXECUTE_TASKS_V3: "false"
       SERVICES_HOST: ""
       LANG: C.UTF-8
     resource-class: 'docker_linux_amd64/extra_large+'
