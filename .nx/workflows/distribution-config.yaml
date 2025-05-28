@@ -7,3 +7,8 @@ assignment-rules:
     run-on:
       - agent: linux-extra-large-plus-jvm
         parallelism: 1
+        
+  - projects:
+      - "*"
+    run-on:
+      - agent: linux-extra-large-plus-jvm

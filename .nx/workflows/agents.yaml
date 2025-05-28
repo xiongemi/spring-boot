@@ -1,6 +1,7 @@
 launch-templates:
   linux-extra-large-plus-jvm:
     env:
+      NX_CLOUD_FORCE_USE_EXECUTE_TASKS_V3: "false"
       DOCKER_HOST: ""
       SERVICES_HOST: ""
       LANG: C.UTF-8
