@@ -162,3 +162,11 @@ toolchain {
 nxProjectReport {
 	atomized = false
 }
+
+tasks.named("antora") {
+    enabled = false
+}
+
+tasks.named("antoraNpmInstall") {
+    enabled = false
+}

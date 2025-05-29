@@ -403,3 +403,11 @@ checkstyleMain {
 compileTestJava {
 	dependsOn processResources
 }
+
+tasks.named("antora") {
+    enabled = false
+}
+
+tasks.named("antoraNpmInstall") {
+    enabled = false
+}
