@@ -189,7 +189,7 @@ tasks.named("antoraNpmInstall") {
     enabled = false
 }
 
-/*
+/* 
 generateHelpMojo {
 	enabled = false
 }
@@ -197,4 +197,5 @@ generateHelpMojo {
 generatePluginDescriptor {
 	enabled = false
 }
+
 */
