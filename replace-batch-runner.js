@@ -22,5 +22,5 @@ function replaceJar(sourceJar, targetJar) {
 }
 
 const workspaceRoot = process.cwd(); // assumes script is run from workspace root
-// replaceJar(path.join(workspaceRoot, 'batch-runner.jar'), path.join(workspaceRoot, 'node_modules/@nx/gradle/batch-runner/build/libs/batch-runner.jar'));
-// replaceJar(path.join(workspaceRoot, 'batch-runner-all.jar'), path.join(workspaceRoot, 'node_modules/@nx/gradle/batch-runner/build/libs/batch-runner-all.jar'));
+replaceJar(path.join(workspaceRoot, 'batch-runner.jar'), path.join(workspaceRoot, 'node_modules/@nx/gradle/batch-runner/build/libs/batch-runner.jar'));
+replaceJar(path.join(workspaceRoot, 'batch-runner-all.jar'), path.join(workspaceRoot, 'node_modules/@nx/gradle/batch-runner/build/libs/batch-runner-all.jar'));
