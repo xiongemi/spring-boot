@@ -5,7 +5,7 @@
         "postci": "node replace-batch-runner.js"
     },
     "dependencies": {
-        "@nx/gradle": "0.0.0-pr-31313-574e68d",
-        "nx": "0.0.0-pr-31313-574e68d"
+        "@nx/gradle": "0.0.0-pr-31313-3e61ace",
+        "nx": "0.0.0-pr-31313-3e61ace"
     }
 }
