@@ -48,3 +48,5 @@ node_modules
 
 !batch-runner.jar
 !batch-runner-all.jar
+.specstory/**
+.cursorindexingignore
