@@ -159,6 +159,10 @@ toolchain {
 	maximumCompatibleJavaVersion = JavaLanguageVersion.of(23)
 }
 
+nxProjectReport {
+	atomized = false
+}
+
 tasks.named("antora") {
     enabled = false
 }
