@@ -40,7 +40,16 @@
       }
     }
   },
-  "bustCache": 101,
+  "bustCache": 103,
   "nxCloudUrl": "https://staging.nx.app",
-  "nxCloudId": "67a56832eb5d9093e3ebe776"
+  "nxCloudId": "67a56832eb5d9093e3ebe776",
+  "useNativeTaskHasher": false,
+  "taskRunnerOptions": {
+    "default": {
+      "runner": "@nx/workspace/tasks-runners/default",
+      "options": {
+        "useNativeTaskHasher": false
+      }
+    }
+  }
 }
