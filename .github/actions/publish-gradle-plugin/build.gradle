@@ -15,6 +15,7 @@
  */
 
 plugins {
+    id "dev.nx.gradle.project-graph" version "0.0.1-alpha.7"
 	id "com.gradle.plugin-publish" version "1.2.1"
 }
 
@@ -27,4 +28,10 @@ tasks.register("publishExisting", com.gradle.publish.PublishExistingTask) {
 	pluginDescription = "Spring Boot Gradle Plugin"
 	website = "https://spring.io/projects/spring-boot"
 	vcsUrl = "https://github.com/spring-projects/spring-boot"
+}
+
+allprojects {
+    apply {
+        plugin("dev.nx.gradle.project-graph")
+    }
 }

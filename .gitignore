@@ -42,3 +42,11 @@ secrets.yml
 .git-hooks/
 node_modules
 /.kotlin/
+
+.nx/installation
+.nx/cache
+.nx/workspace-data
+
+.specstory/**
+.cursorindexingignore
+.claude

@@ -76,6 +76,9 @@ public class CycleDetectionPlugin implements Plugin<Settings> {
 	private Graph<String, DefaultEdge> createGraph(Map<Project, Set<Project>> dependenciesByProject) {
 		Graph<String, DefaultEdge> graph = new DefaultDirectedGraph<>(DefaultEdge.class);
 		dependenciesByProject.keySet().forEach((project) -> graph.addVertex(project.getName()));
+		// Add all dependency vertices first
+		dependenciesByProject.values().forEach(dependencies -> 
+			dependencies.forEach(dependency -> graph.addVertex(dependency.getName())));
 		dependenciesByProject.forEach((project, dependencies) -> dependencies
 			.forEach((dependency) -> graph.addEdge(project.getName(), dependency.getName())));
 		return graph;

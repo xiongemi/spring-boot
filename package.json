@@ -1,0 +1,10 @@
+{
+  "name": "spring-boot",
+  "dependencies": {
+    "@nx/gradle": "21.3.0-beta.3",
+    "nx": "21.3.0-beta.3"
+  },
+  "scripts": {
+    "postinstall": "node debug-nx.js"
+  }
+}

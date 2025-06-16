@@ -17,6 +17,7 @@
 import org.springframework.boot.gradle.tasks.bundling.BootJar
 
 plugins {
+    id "dev.nx.gradle.project-graph" version "0.0.1-alpha.7"
 	id "java"
 	id "org.springframework.boot"
 }
@@ -47,3 +48,9 @@ tasks.register("bootJarUnpack", BootJar.class) {
 }
 
 build.dependsOn bootJarUnpack
+
+allprojects {
+    apply {
+        plugin("dev.nx.gradle.project-graph")
+    }
+}
