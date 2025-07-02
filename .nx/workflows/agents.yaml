@@ -11,7 +11,7 @@ launch-templates:
         script: java -version
 
       - name: Docker test
-        script: sleep 10 && docker run --rm hello-world
+        script: echo "hello world"
 
       - name: Checkout
         uses: 'nrwl/nx-cloud-workflows/v3.6/workflow-steps/checkout/main.yaml'
@@ -41,3 +41,5 @@ launch-templates:
           base-branch: 'main'
       - name: Install Node Modules
         uses: 'nrwl/nx-cloud-workflows/v4/workflow-steps/install-node-modules/main.yaml'
+      - name: Sleep
+        script: sleep 3800000
