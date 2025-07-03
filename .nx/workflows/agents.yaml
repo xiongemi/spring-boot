@@ -5,7 +5,7 @@ launch-templates:
       SERVICES_HOST: ""
       LANG: C.UTF-8
     resource-class: 'docker_linux_amd64/extra_large+'
-    image: 'ubuntu22.04-node20.11-v10'
+    image: 'ubuntu22.04-node20.9-withDind-v11'
     init-steps:
       - name: java version
         script: java -version
