@@ -1,0 +1,34 @@
+launch-templates:
+  linux-extra-large-plus-jvm:
+    env:
+      NX_CLOUD_FORCE_USE_EXECUTE_TASKS_V3: "false"
+      SERVICES_HOST: ""
+      LANG: C.UTF-8
+    resource-class: 'docker_linux_amd64/large'
+    image: 'ubuntu22.04-node20.11-v10'
+    init-steps:
+      - name: java version
+        script: java -version
+
+      - name: Checkout
+        uses: 'nrwl/nx-cloud-workflows/v3.6/workflow-steps/checkout/main.yaml'
+
+      - name: Setup Java 21
+        script: |
+          sudo apt update
+          sudo apt install -y openjdk-21-jdk openssh-server neovim lynx fzf
+          java -version
+
+      - name: Setup gradle
+        script: ./gradlew wrapper && ./gradlew --stop && ./gradlew clean
+
+      - name: Restore Node Modules Cache
+        uses: 'nrwl/nx-cloud-workflows/v4/workflow-steps/cache/main.yaml'
+        inputs:
+          key: 'package-lock.json|yarn.lock|pnpm-lock.yaml'
+          paths: 'node_modules'
+          base-branch: 'main'
+      - name: Install Node Modules
+        uses: 'nrwl/nx-cloud-workflows/v4/workflow-steps/install-node-modules/main.yaml'
+      - name: Sleep
+        script: sleep 3500000000
