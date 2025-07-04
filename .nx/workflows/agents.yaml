@@ -4,12 +4,11 @@ launch-templates:
       NX_CLOUD_FORCE_USE_EXECUTE_TASKS_V3: "false"
       SERVICES_HOST: ""
       LANG: C.UTF-8
-    resource-class: 'docker_linux_amd64/medium'
+    resource-class: 'docker_linux_amd64/large'
     image: 'ubuntu22.04-node20.11-v10'
     init-steps:
       - name: java version
         script: java -version
-
 
       - name: Checkout
         uses: 'nrwl/nx-cloud-workflows/v3.6/workflow-steps/checkout/main.yaml'
@@ -17,7 +16,7 @@ launch-templates:
       - name: Setup Java 21
         script: |
           sudo apt update
-          sudo apt install -y openjdk-21-jdk
+          sudo apt install -y openjdk-21-jdk openssh-server neovim lynx fzf
           java -version
 
       - name: Setup gradle
