@@ -41,6 +41,6 @@
     }
   },
   "bustCache": 101,
-  "nxCloudUrl": "https://staging.nx.app",
-  "nxCloudId": "67a56832eb5d9093e3ebe776"
+  "nxCloudUrl": "http://localhost:4203",
+  "nxCloudId": "68674369f4720b01566f1f12"
 }
