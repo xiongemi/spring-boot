@@ -41,6 +41,6 @@
     }
   },
   "bustCache": 101,
-  "nxCloudUrl": "http://localhost:4203",
-  "nxCloudId": "68674369f4720b01566f1f12"
+  "nxCloudUrl": "https://tester.gc.ent.nx.app",
+  "nxCloudId": "686801bbe7c63f4c8ac7ccc5"
 }
