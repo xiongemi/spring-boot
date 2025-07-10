@@ -72,7 +72,7 @@ public class ResolvedDockerHost extends DockerHost {
 		if (originalAddress.startsWith(UNIX_SOCKET_PREFIX)) {
 			return false;
 		}
-		// Check the processed address for http/tcp 
+		// Check the processed address for http/tcp
 		String processedAddress = getAddress();
 		if (processedAddress.startsWith("http") || processedAddress.startsWith("tcp")) {
 			// Check if it's localhost or 127.0.0.1 - these are local even over TCP
