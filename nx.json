@@ -38,6 +38,12 @@
       "options": {
         "excludeDependsOn": false
       }
+    },
+    "dockerTest": {
+      "executor": "@nx/gradle:gradle",
+      "options": {
+        "excludeDependsOn": false
+      }
     }
   },
   "bustCache": 103,
