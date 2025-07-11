@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2022 the original author or authors.
+ * Copyright 2012-present the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,7 +29,7 @@ import reactor.core.publisher.Mono
 class MyRestController(private val userRepository: UserRepository, private val customerRepository: CustomerRepository) {
 
 	@GetMapping("/{userId}")
-	fun getUser(@PathVariable userId: Long): Mono<User?> {
+	fun getUser(@PathVariable userId: Long): Mono<User> {
 		return userRepository.findById(userId)
 	}
 

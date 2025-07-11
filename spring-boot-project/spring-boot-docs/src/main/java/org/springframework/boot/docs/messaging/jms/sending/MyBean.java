@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2021 the original author or authors.
+ * Copyright 2012-present the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,21 +16,21 @@
 
 package org.springframework.boot.docs.messaging.jms.sending;
 
-import org.springframework.jms.core.JmsTemplate;
+import org.springframework.jms.core.JmsClient;
 import org.springframework.stereotype.Component;
 
 @Component
 public class MyBean {
 
-	private final JmsTemplate jmsTemplate;
+	private final JmsClient jmsClient;
 
-	public MyBean(JmsTemplate jmsTemplate) {
-		this.jmsTemplate = jmsTemplate;
+	public MyBean(JmsClient jmsClient) {
+		this.jmsClient = jmsClient;
 	}
 
 	// @fold:on // ...
 	public void someMethod() {
-		this.jmsTemplate.convertAndSend("hello");
+		this.jmsClient.destination("myQueue").send("hello");
 	}
 	// @fold:off
 

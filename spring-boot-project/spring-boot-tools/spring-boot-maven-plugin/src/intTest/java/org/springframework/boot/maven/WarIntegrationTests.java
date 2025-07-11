@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2025 the original author or authors.
+ * Copyright 2012-present the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,8 +29,8 @@ import java.util.jar.JarFile;
 import org.junit.jupiter.api.TestTemplate;
 import org.junit.jupiter.api.extension.ExtendWith;
 
-import org.springframework.boot.loader.tools.FileUtils;
 import org.springframework.boot.loader.tools.JarModeLibrary;
+import org.springframework.boot.testsupport.FileUtils;
 import org.springframework.util.FileSystemUtils;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -56,7 +56,7 @@ class WarIntegrationTests extends AbstractArchiveIntegrationTests {
 			.execute((project) -> assertThat(jar(new File(project, "target/war-0.0.1.BUILD-SNAPSHOT.war")))
 				.hasEntryWithNameStartingWith("WEB-INF/lib/spring-context")
 				.hasEntryWithNameStartingWith("WEB-INF/lib/spring-core")
-				.hasEntryWithNameStartingWith("WEB-INF/lib/spring-jcl")
+				.hasEntryWithNameStartingWith("WEB-INF/lib/commons-logging")
 				.hasEntryWithNameStartingWith("WEB-INF/lib-provided/jakarta.servlet-api-6")
 				.hasEntryWithName("org/springframework/boot/loader/launch/WarLauncher.class")
 				.hasEntryWithName("WEB-INF/classes/org/test/SampleApplication.class")
@@ -80,7 +80,7 @@ class WarIntegrationTests extends AbstractArchiveIntegrationTests {
 			.execute((project) -> assertThat(jar(new File(project, "target/war-with-unpack-0.0.1.BUILD-SNAPSHOT.war")))
 				.hasUnpackEntryWithNameStartingWith("WEB-INF/lib/spring-core-")
 				.hasEntryWithNameStartingWith("WEB-INF/lib/spring-context-")
-				.hasEntryWithNameStartingWith("WEB-INF/lib/spring-jcl-"));
+				.hasEntryWithNameStartingWith("WEB-INF/lib/commons-logging-"));
 	}
 
 	@TestTemplate
@@ -123,9 +123,9 @@ class WarIntegrationTests extends AbstractArchiveIntegrationTests {
 			List<String> sortedLibs = Arrays.asList(
 					// these libraries are copied from the original war, sorted when
 					// packaged by Maven
-					"WEB-INF/lib/micrometer-commons", "WEB-INF/lib/micrometer-observation", "WEB-INF/lib/spring-aop",
-					"WEB-INF/lib/spring-beans", "WEB-INF/lib/spring-context", "WEB-INF/lib/spring-core",
-					"WEB-INF/lib/spring-expression", "WEB-INF/lib/spring-jcl",
+					"WEB-INF/lib/commons-logging", "WEB-INF/lib/jspecify", "WEB-INF/lib/micrometer-commons",
+					"WEB-INF/lib/micrometer-observation", "WEB-INF/lib/spring-aop", "WEB-INF/lib/spring-beans",
+					"WEB-INF/lib/spring-context", "WEB-INF/lib/spring-core", "WEB-INF/lib/spring-expression",
 					// these libraries are contributed by Spring Boot repackaging, and
 					// sorted separately
 					"WEB-INF/lib/" + JarModeLibrary.TOOLS.getCoordinates().getArtifactId());

@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2025 the original author or authors.
+ * Copyright 2012-present the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -60,6 +60,29 @@ public enum ConfigurationPropertyState {
 		Assert.notNull(predicate, "'predicate' must not be null");
 		for (T item : source) {
 			if (predicate.test(item)) {
+				return PRESENT;
+			}
+		}
+		return ABSENT;
+	}
+
+	/**
+	 * Search the given iterable using a predicate to determine if content is
+	 * {@link #PRESENT} or {@link #ABSENT}.
+	 * @param <T> the data type
+	 * @param source the source iterable to search
+	 * @param startInclusive the first index to cover
+	 * @param endExclusive index immediately past the last index to cover
+	 * @param predicate the predicate used to test for presence
+	 * @return {@link #PRESENT} if the iterable contains a matching item, otherwise
+	 * {@link #ABSENT}.
+	 */
+	static <T> ConfigurationPropertyState search(T[] source, int startInclusive, int endExclusive,
+			Predicate<T> predicate) {
+		Assert.notNull(source, "'source' must not be null");
+		Assert.notNull(predicate, "'predicate' must not be null");
+		for (int i = startInclusive; i < endExclusive; i++) {
+			if (predicate.test(source[i])) {
 				return PRESENT;
 			}
 		}

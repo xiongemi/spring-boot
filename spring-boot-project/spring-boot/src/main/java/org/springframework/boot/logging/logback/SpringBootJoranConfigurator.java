@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2025 the original author or authors.
+ * Copyright 2012-present the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -188,8 +188,8 @@ class SpringBootJoranConfigurator extends JoranConfigurator {
 			serializationTypes(this.model).forEach(serializationHints::registerType);
 			reflectionTypes(this.model).forEach((type) -> generationContext.getRuntimeHints()
 				.reflection()
-				.registerType(TypeReference.of(type), MemberCategory.INTROSPECT_PUBLIC_METHODS,
-						MemberCategory.INVOKE_PUBLIC_METHODS, MemberCategory.INVOKE_PUBLIC_CONSTRUCTORS));
+				.registerType(TypeReference.of(type), MemberCategory.INVOKE_PUBLIC_METHODS,
+						MemberCategory.INVOKE_PUBLIC_CONSTRUCTORS));
 		}
 
 		private byte[] serializeModel() {

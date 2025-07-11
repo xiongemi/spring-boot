@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2025 the original author or authors.
+ * Copyright 2012-present the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,8 +27,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.SequenceGenerator;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
 
 import org.springframework.util.Assert;
 
@@ -53,7 +51,8 @@ public class Review implements Serializable {
 	private Rating rating;
 
 	@Column(nullable = false)
-	@Temporal(TemporalType.DATE)
+	@jakarta.persistence.Temporal(jakarta.persistence.TemporalType.DATE)
+	@SuppressWarnings("deprecation")
 	private Date checkInDate;
 
 	@Column(nullable = false)

@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2025 the original author or authors.
+ * Copyright 2012-present the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,7 +36,6 @@ import org.springframework.context.annotation.ImportSelector;
 import org.springframework.core.OrderComparator;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.util.Assert;
 import org.springframework.util.ClassUtils;
 
@@ -48,7 +47,7 @@ import org.springframework.util.ClassUtils;
  * {@link ApplicationContext} and/or custom {@link ImportSelector} implementations.
  * <p>
  * This class is primarily intended for use with tests that need to specify configuration
- * classes but can't use {@link SpringRunner}.
+ * classes but can't use {@link org.springframework.test.context.junit4.SpringRunner}.
  * <p>
  * Implementations of this class should be annotated with {@link Order @Order} or
  * implement {@link Ordered}.
@@ -74,9 +73,8 @@ public abstract class Configurations {
 	 */
 	protected Configurations(Collection<Class<?>> classes) {
 		Assert.notNull(classes, "'classes' must not be null");
-		Collection<Class<?>> sorted = sort(classes);
 		this.sorter = null;
-		this.classes = Collections.unmodifiableSet(new LinkedHashSet<>(sorted));
+		this.classes = Collections.unmodifiableSet(new LinkedHashSet<>(classes));
 		this.beanNameGenerator = null;
 	}
 
@@ -98,18 +96,6 @@ public abstract class Configurations {
 
 	protected final Set<Class<?>> getClasses() {
 		return this.classes;
-	}
-
-	/**
-	 * Sort configuration classes into the order that they should be applied.
-	 * @param classes the classes to sort
-	 * @return a sorted set of classes
-	 * @deprecated since 3.4.0 for removal in 4.0.0 in favor of
-	 * {@link #Configurations(UnaryOperator, Collection, Function)}
-	 */
-	@Deprecated(since = "3.4.0", forRemoval = true)
-	protected Collection<Class<?>> sort(Collection<Class<?>> classes) {
-		return classes;
 	}
 
 	/**

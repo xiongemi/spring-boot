@@ -2,7 +2,9 @@ name: Run System Tests
 on:
   push:
     branches:
-      - main
+      - 'main'
+permissions:
+  contents: read
 jobs:
   run-system-tests:
     name: 'Java ${{ matrix.java.version}}'

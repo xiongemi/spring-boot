@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2025 the original author or authors.
+ * Copyright 2012-present the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,11 +19,8 @@ package org.springframework.boot.info;
 import java.security.KeyStore;
 import java.security.KeyStoreException;
 import java.security.cert.Certificate;
-import java.security.cert.CertificateExpiredException;
-import java.security.cert.CertificateNotYetValidException;
 import java.security.cert.X509Certificate;
 import java.time.Clock;
-import java.time.Duration;
 import java.time.Instant;
 import java.util.Arrays;
 import java.util.Collections;
@@ -50,31 +47,25 @@ public class SslInfo {
 
 	private final SslBundles sslBundles;
 
-	private final Duration certificateValidityWarningThreshold;
-
 	private final Clock clock;
 
 	/**
 	 * Creates a new instance.
 	 * @param sslBundles the {@link SslBundles} to extract the info from
-	 * @param certificateValidityWarningThreshold the certificate validity warning
-	 * threshold
+	 * @since 4.0.0
 	 */
-	public SslInfo(SslBundles sslBundles, Duration certificateValidityWarningThreshold) {
-		this(sslBundles, certificateValidityWarningThreshold, Clock.systemDefaultZone());
+	public SslInfo(SslBundles sslBundles) {
+		this(sslBundles, Clock.systemDefaultZone());
 	}
 
 	/**
 	 * Creates a new instance.
 	 * @param sslBundles the {@link SslBundles} to extract the info from
-	 * @param certificateValidityWarningThreshold the certificate validity warning
-	 * threshold
 	 * @param clock the {@link Clock} to use
-	 * @since 3.5.0
+	 * @since 4.0.0
 	 */
-	public SslInfo(SslBundles sslBundles, Duration certificateValidityWarningThreshold, Clock clock) {
+	public SslInfo(SslBundles sslBundles, Clock clock) {
 		this.sslBundles = sslBundles;
-		this.certificateValidityWarningThreshold = certificateValidityWarningThreshold;
 		this.clock = clock;
 	}
 
@@ -218,26 +209,25 @@ public class SslInfo {
 			return extract((certificate) -> {
 				Instant starts = getValidityStarts();
 				Instant ends = getValidityEnds();
-				Duration threshold = SslInfo.this.certificateValidityWarningThreshold;
-				try {
-					certificate.checkValidity();
-					return (!isExpiringSoon(certificate, threshold)) ? CertificateValidityInfo.VALID
-							: new CertificateValidityInfo(Status.WILL_EXPIRE_SOON,
-									"Certificate will expire within threshold (%s) at %s", threshold, ends);
-				}
-				catch (CertificateNotYetValidException ex) {
-					return new CertificateValidityInfo(Status.NOT_YET_VALID, "Not valid before %s", starts);
-				}
-				catch (CertificateExpiredException ex) {
-					return new CertificateValidityInfo(Status.EXPIRED, "Not valid after %s", ends);
-				}
+				CertificateValidityInfo.Status validity = checkValidity(starts, ends);
+				return switch (validity) {
+					case VALID -> CertificateValidityInfo.VALID;
+					case EXPIRED -> new CertificateValidityInfo(Status.EXPIRED, "Not valid after %s", ends);
+					case NOT_YET_VALID ->
+						new CertificateValidityInfo(Status.NOT_YET_VALID, "Not valid before %s", starts);
+				};
 			});
 		}
 
-		private boolean isExpiringSoon(X509Certificate certificate, Duration threshold) {
-			Instant shouldBeValidAt = Instant.now(SslInfo.this.clock).plus(threshold);
-			Instant expiresAt = certificate.getNotAfter().toInstant();
-			return shouldBeValidAt.isAfter(expiresAt);
+		private CertificateValidityInfo.Status checkValidity(Instant starts, Instant ends) {
+			Instant now = SslInfo.this.clock.instant();
+			if (now.isBefore(starts)) {
+				return CertificateValidityInfo.Status.NOT_YET_VALID;
+			}
+			if (now.isAfter(ends)) {
+				return CertificateValidityInfo.Status.EXPIRED;
+			}
+			return CertificateValidityInfo.Status.VALID;
 		}
 
 		private <V, R> R extract(Function<X509Certificate, V> valueExtractor, Function<V, R> resultExtractor) {
@@ -292,13 +282,7 @@ public class SslInfo {
 			/**
 			 * The certificate's validity date range is in the past.
 			 */
-			EXPIRED(false),
-
-			/**
-			 * The certificate is still valid, but the end of its validity date range is
-			 * within the defined threshold.
-			 */
-			WILL_EXPIRE_SOON(true);
+			EXPIRED(false);
 
 			private final boolean valid;
 

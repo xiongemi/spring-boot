@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2022 the original author or authors.
+ * Copyright 2012-present the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,7 +29,7 @@ class MyService(restClientBuilder: RestClient.Builder) {
 		restClient = restClientBuilder.baseUrl("https://example.org").build()
 	}
 
-	fun someRestCall(name: String?): Details {
+	fun someRestCall(name: String): Details {
 		return restClient.get().uri("/{name}/details", name)
 				.retrieve().body(Details::class.java)!!
 	}

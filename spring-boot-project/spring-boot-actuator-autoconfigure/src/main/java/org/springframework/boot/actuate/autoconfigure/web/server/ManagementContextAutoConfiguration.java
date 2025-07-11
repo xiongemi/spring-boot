@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2025 the original author or authors.
+ * Copyright 2012-present the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,20 +16,23 @@
 
 package org.springframework.boot.actuate.autoconfigure.web.server;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.SmartInitializingSingleton;
-import org.springframework.boot.actuate.autoconfigure.web.ManagementContextFactory;
 import org.springframework.boot.actuate.autoconfigure.web.ManagementContextType;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.AutoConfigureOrder;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.boot.origin.Origin;
+import org.springframework.boot.origin.OriginLookup;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.core.Ordered;
 import org.springframework.core.env.ConfigurableEnvironment;
+import org.springframework.core.env.EnumerablePropertySource;
 import org.springframework.core.env.Environment;
-import org.springframework.core.env.PropertySource;
 import org.springframework.util.Assert;
 
 /**
@@ -44,7 +47,6 @@ import org.springframework.util.Assert;
  */
 @AutoConfiguration
 @AutoConfigureOrder(Ordered.LOWEST_PRECEDENCE)
-@EnableConfigurationProperties(ManagementServerProperties.class)
 public class ManagementContextAutoConfiguration {
 
 	@Configuration(proxyBeanMethods = false)
@@ -84,17 +86,7 @@ public class ManagementContextAutoConfiguration {
 		 * @param environment the environment
 		 */
 		private void addLocalManagementPortPropertyAlias(ConfigurableEnvironment environment) {
-			environment.getPropertySources().addLast(new PropertySource<>("Management Server") {
-
-				@Override
-				public Object getProperty(String name) {
-					if ("local.management.port".equals(name)) {
-						return environment.getProperty("local.server.port");
-					}
-					return null;
-				}
-
-			});
+			environment.getPropertySources().addLast(new LocalManagementPortPropertySource(environment));
 		}
 
 		@Configuration(proxyBeanMethods = false)
@@ -107,12 +99,54 @@ public class ManagementContextAutoConfiguration {
 
 	@Configuration(proxyBeanMethods = false)
 	@ConditionalOnManagementPort(ManagementPortType.DIFFERENT)
+	@EnableConfigurationProperties(ManagementServerProperties.class)
 	static class DifferentManagementContextConfiguration {
 
 		@Bean
 		static ChildManagementContextInitializer childManagementContextInitializer(
 				ManagementContextFactory managementContextFactory, AbstractApplicationContext parentContext) {
 			return new ChildManagementContextInitializer(managementContextFactory, parentContext);
+		}
+
+	}
+
+	/**
+	 * {@link EnumerablePropertySource} providing {@code local.management.port} support.
+	 */
+	static class LocalManagementPortPropertySource extends EnumerablePropertySource<Object>
+			implements OriginLookup<String> {
+
+		private static final Map<String, String> PROPERTY_MAPPINGS = Map.of("local.management.port",
+				"local.server.port");
+
+		private static final String[] PROPERTY_NAMES = PROPERTY_MAPPINGS.keySet().toArray(String[]::new);
+
+		private final Environment environment;
+
+		LocalManagementPortPropertySource(Environment environment) {
+			super("Management Server");
+			this.environment = environment;
+		}
+
+		@Override
+		public String[] getPropertyNames() {
+			return PROPERTY_NAMES;
+		}
+
+		@Override
+		public Object getProperty(String name) {
+			String mapped = PROPERTY_MAPPINGS.get(name);
+			return (mapped != null) ? this.environment.getProperty(mapped) : null;
+		}
+
+		@Override
+		public Origin getOrigin(String key) {
+			return null;
+		}
+
+		@Override
+		public boolean isImmutable() {
+			return true;
 		}
 
 	}

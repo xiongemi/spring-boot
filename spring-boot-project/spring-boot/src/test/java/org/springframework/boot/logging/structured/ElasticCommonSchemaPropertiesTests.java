@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2025 the original author or authors.
+ * Copyright 2012-present the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -96,12 +96,12 @@ class ElasticCommonSchemaPropertiesTests {
 		new ElasticCommonSchemaPropertiesRuntimeHints().registerHints(hints, getClass().getClassLoader());
 		assertThat(RuntimeHintsPredicates.reflection().onType(ElasticCommonSchemaProperties.class)).accepts(hints);
 		assertThat(RuntimeHintsPredicates.reflection()
-			.onConstructor(ElasticCommonSchemaProperties.class.getConstructor(Service.class))
-			.invoke()).accepts(hints);
+			.onConstructorInvocation(ElasticCommonSchemaProperties.class.getConstructor(Service.class))).accepts(hints);
 		assertThat(RuntimeHintsPredicates.reflection().onType(Service.class)).accepts(hints);
 		assertThat(RuntimeHintsPredicates.reflection()
-			.onConstructor(Service.class.getConstructor(String.class, String.class, String.class, String.class))
-			.invoke()).accepts(hints);
+			.onConstructorInvocation(
+					Service.class.getConstructor(String.class, String.class, String.class, String.class)))
+			.accepts(hints);
 	}
 
 	@Test

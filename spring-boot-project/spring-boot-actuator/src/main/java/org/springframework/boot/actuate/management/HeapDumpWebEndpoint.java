@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2025 the original author or authors.
+ * Copyright 2012-present the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,6 +29,7 @@ import java.nio.channels.ReadableByteChannel;
 import java.nio.file.Files;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -38,15 +39,16 @@ import org.apache.commons.logging.LogFactory;
 
 import org.springframework.boot.actuate.endpoint.Access;
 import org.springframework.boot.actuate.endpoint.annotation.Endpoint;
+import org.springframework.boot.actuate.endpoint.annotation.OptionalParameter;
 import org.springframework.boot.actuate.endpoint.annotation.ReadOperation;
 import org.springframework.boot.actuate.endpoint.web.WebEndpointResponse;
 import org.springframework.boot.actuate.endpoint.web.annotation.WebEndpoint;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
-import org.springframework.lang.Nullable;
 import org.springframework.util.Assert;
 import org.springframework.util.ClassUtils;
 import org.springframework.util.ReflectionUtils;
+import org.springframework.util.StringUtils;
 
 /**
  * Web {@link Endpoint @Endpoint} to expose heap dumps.
@@ -75,7 +77,7 @@ public class HeapDumpWebEndpoint {
 	}
 
 	@ReadOperation
-	public WebEndpointResponse<Resource> heapDump(@Nullable Boolean live) {
+	public WebEndpointResponse<Resource> heapDump(@OptionalParameter Boolean live) {
 		try {
 			if (this.lock.tryLock(this.timeout, TimeUnit.MILLISECONDS)) {
 				try {
@@ -112,12 +114,19 @@ public class HeapDumpWebEndpoint {
 	 * @throws HeapDumperUnavailableException if the heap dumper cannot be created
 	 */
 	protected HeapDumper createHeapDumper() throws HeapDumperUnavailableException {
-		try {
-			return new HotSpotDiagnosticMXBeanHeapDumper();
-		}
-		catch (HeapDumperUnavailableException ex) {
+		if (isRunningOnOpenJ9()) {
 			return new OpenJ9DiagnosticsMXBeanHeapDumper();
 		}
+		return new HotSpotDiagnosticMXBeanHeapDumper();
+	}
+
+	private boolean isRunningOnOpenJ9() {
+		String vmName = System.getProperty("java.vm.name");
+		if (StringUtils.hasLength(vmName) && vmName.toLowerCase(Locale.ROOT).contains("openj9")) {
+			return true;
+		}
+		String vmVendor = System.getProperty("java.vm.vendor");
+		return StringUtils.hasLength(vmVendor) && vmVendor.toLowerCase(Locale.ROOT).contains("openj9");
 	}
 
 	/**

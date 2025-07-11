@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2025 the original author or authors.
+ * Copyright 2012-present the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,7 @@
 package org.springframework.boot.build;
 
 import org.gradle.api.Project;
+import org.gradle.api.plugins.JavaBasePlugin;
 import org.gradle.plugins.ide.api.XmlFileContentMerger;
 import org.gradle.plugins.ide.eclipse.EclipsePlugin;
 import org.gradle.plugins.ide.eclipse.model.Classpath;
@@ -34,10 +35,12 @@ import org.gradle.plugins.ide.eclipse.model.Library;
 class EclipseConventions {
 
 	void apply(Project project) {
-		project.getPlugins().withType(EclipsePlugin.class, (eclipse) -> {
-			EclipseModel eclipseModel = project.getExtensions().getByType(EclipseModel.class);
-			eclipseModel.classpath(this::configureClasspath);
-		});
+		project.getPlugins()
+			.withType(EclipsePlugin.class,
+					(eclipse) -> project.getPlugins().withType(JavaBasePlugin.class, (javaBase) -> {
+						EclipseModel eclipseModel = project.getExtensions().getByType(EclipseModel.class);
+						eclipseModel.classpath(this::configureClasspath);
+					}));
 	}
 
 	private void configureClasspath(EclipseClasspath classpath) {

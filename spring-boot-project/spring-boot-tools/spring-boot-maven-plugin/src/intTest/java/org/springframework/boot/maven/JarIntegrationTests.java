@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2025 the original author or authors.
+ * Copyright 2012-present the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,8 +28,8 @@ import java.util.jar.JarFile;
 import org.junit.jupiter.api.TestTemplate;
 import org.junit.jupiter.api.extension.ExtendWith;
 
-import org.springframework.boot.loader.tools.FileUtils;
 import org.springframework.boot.loader.tools.JarModeLibrary;
+import org.springframework.boot.testsupport.FileUtils;
 import org.springframework.util.FileSystemUtils;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -64,7 +64,7 @@ class JarIntegrationTests extends AbstractArchiveIntegrationTests {
 			})
 				.hasEntryWithNameStartingWith("BOOT-INF/lib/spring-context")
 				.hasEntryWithNameStartingWith("BOOT-INF/lib/spring-core")
-				.hasEntryWithNameStartingWith("BOOT-INF/lib/spring-jcl")
+				.hasEntryWithNameStartingWith("BOOT-INF/lib/commons-logging")
 				.hasEntryWithNameStartingWith("BOOT-INF/lib/jakarta.servlet-api-6")
 				.hasEntryWithName("BOOT-INF/classes/org/test/SampleApplication.class")
 				.hasEntryWithName("org/springframework/boot/loader/launch/JarLauncher.class");
@@ -195,7 +195,7 @@ class JarIntegrationTests extends AbstractArchiveIntegrationTests {
 			assertThat(jar(repackaged)).hasEntryWithNameStartingWith("BOOT-INF/classes/")
 				.hasEntryWithNameStartingWith("BOOT-INF/lib/spring-context")
 				.hasEntryWithNameStartingWith("BOOT-INF/lib/spring-core")
-				.hasEntryWithNameStartingWith("BOOT-INF/lib/spring-jcl")
+				.hasEntryWithNameStartingWith("BOOT-INF/lib/commons-logging")
 				.doesNotHaveEntryWithName("BOOT-INF/lib/servlet-api-2.5.jar");
 		});
 	}
@@ -210,7 +210,7 @@ class JarIntegrationTests extends AbstractArchiveIntegrationTests {
 				assertThat(jar(repackaged)).hasEntryWithNameStartingWith("BOOT-INF/classes/")
 					.hasEntryWithNameStartingWith("BOOT-INF/lib/spring-context")
 					.hasEntryWithNameStartingWith("BOOT-INF/lib/spring-core")
-					.hasEntryWithNameStartingWith("BOOT-INF/lib/spring-jcl")
+					.hasEntryWithNameStartingWith("BOOT-INF/lib/commons-logging")
 					.doesNotHaveEntryWithNameStartingWith("BOOT-INF/lib/jakarta.servlet-api-");
 			});
 	}
@@ -223,7 +223,7 @@ class JarIntegrationTests extends AbstractArchiveIntegrationTests {
 				.hasEntryWithNameStartingWith("BOOT-INF/lib/jakarta.servlet-api-")
 				.doesNotHaveEntryWithNameStartingWith("BOOT-INF/lib/spring-context")
 				.doesNotHaveEntryWithNameStartingWith("BOOT-INF/lib/spring-core")
-				.doesNotHaveEntryWithNameStartingWith("BOOT-INF/lib/spring-jcl");
+				.doesNotHaveEntryWithNameStartingWith("BOOT-INF/lib/commons-logging");
 		});
 	}
 
@@ -238,7 +238,7 @@ class JarIntegrationTests extends AbstractArchiveIntegrationTests {
 					.hasEntryWithNameStartingWith("BOOT-INF/lib/jakarta.servlet-api-")
 					.doesNotHaveEntryWithNameStartingWith("BOOT-INF/lib/spring-context")
 					.doesNotHaveEntryWithNameStartingWith("BOOT-INF/lib/spring-core")
-					.doesNotHaveEntryWithNameStartingWith("BOOT-INF/lib/spring-jcl");
+					.doesNotHaveEntryWithNameStartingWith("BOOT-INF/lib/commons-logging");
 			});
 	}
 
@@ -249,7 +249,7 @@ class JarIntegrationTests extends AbstractArchiveIntegrationTests {
 			assertThat(jar(repackaged)).hasEntryWithNameStartingWith("BOOT-INF/classes/")
 				.hasEntryWithNameStartingWith("BOOT-INF/lib/spring-context")
 				.hasEntryWithNameStartingWith("BOOT-INF/lib/spring-core")
-				.hasEntryWithNameStartingWith("BOOT-INF/lib/spring-jcl")
+				.hasEntryWithNameStartingWith("BOOT-INF/lib/commons-logging")
 				.doesNotHaveEntryWithName("BOOT-INF/lib/log4j-api-2.4.1.jar");
 		});
 	}
@@ -491,12 +491,11 @@ class JarIntegrationTests extends AbstractArchiveIntegrationTests {
 	void whenJarIsRepackagedWithOutputTimestampConfiguredThenLibrariesAreSorted(MavenBuild mavenBuild) {
 		mavenBuild.project("jar-output-timestamp").execute((project) -> {
 			File repackaged = new File(project, "target/jar-output-timestamp-0.0.1.BUILD-SNAPSHOT.jar");
-			List<String> sortedLibs = Arrays.asList("BOOT-INF/lib/jakarta.servlet-api",
-					"BOOT-INF/lib/micrometer-commons", "BOOT-INF/lib/micrometer-observation", "BOOT-INF/lib/spring-aop",
-					"BOOT-INF/lib/spring-beans",
+			List<String> sortedLibs = Arrays.asList("BOOT-INF/lib/commons-logging", "BOOT-INF/lib/jakarta.servlet-api",
+					"BOOT-INF/lib/jspecify", "BOOT-INF/lib/micrometer-commons", "BOOT-INF/lib/micrometer-observation",
+					"BOOT-INF/lib/spring-aop", "BOOT-INF/lib/spring-beans",
 					"BOOT-INF/lib/" + JarModeLibrary.TOOLS.getCoordinates().getArtifactId(),
-					"BOOT-INF/lib/spring-context", "BOOT-INF/lib/spring-core", "BOOT-INF/lib/spring-expression",
-					"BOOT-INF/lib/spring-jcl");
+					"BOOT-INF/lib/spring-context", "BOOT-INF/lib/spring-core", "BOOT-INF/lib/spring-expression");
 			assertThat(jar(repackaged)).entryNamesInPath("BOOT-INF/lib/")
 				.zipSatisfy(sortedLibs,
 						(String jarLib, String expectedLib) -> assertThat(jarLib).startsWith(expectedLib));

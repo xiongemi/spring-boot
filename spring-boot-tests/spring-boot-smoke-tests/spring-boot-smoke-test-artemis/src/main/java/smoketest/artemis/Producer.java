@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2025 the original author or authors.
+ * Copyright 2012-present the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,14 +20,14 @@ import jakarta.jms.Queue;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.jms.core.JmsMessagingTemplate;
+import org.springframework.jms.core.JmsClient;
 import org.springframework.stereotype.Component;
 
 @Component
 public class Producer implements CommandLineRunner {
 
 	@Autowired
-	private JmsMessagingTemplate jmsMessagingTemplate;
+	private JmsClient jmsClient;
 
 	@Autowired
 	private Queue queue;
@@ -39,7 +39,7 @@ public class Producer implements CommandLineRunner {
 	}
 
 	public void send(String msg) {
-		this.jmsMessagingTemplate.convertAndSend(this.queue, msg);
+		this.jmsClient.destination(this.queue).send(msg);
 	}
 
 }

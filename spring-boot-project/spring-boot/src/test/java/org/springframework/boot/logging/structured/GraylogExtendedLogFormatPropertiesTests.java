@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2025 the original author or authors.
+ * Copyright 2012-present the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -109,12 +109,13 @@ class GraylogExtendedLogFormatPropertiesTests {
 		new GraylogExtendedLogFormatPropertiesRuntimeHints().registerHints(hints, getClass().getClassLoader());
 		assertThat(RuntimeHintsPredicates.reflection().onType(GraylogExtendedLogFormatProperties.class)).accepts(hints);
 		assertThat(RuntimeHintsPredicates.reflection()
-			.onConstructor(GraylogExtendedLogFormatProperties.class.getConstructor(String.class, Service.class))
-			.invoke()).accepts(hints);
+			.onConstructorInvocation(
+					GraylogExtendedLogFormatProperties.class.getConstructor(String.class, Service.class)))
+			.accepts(hints);
 		assertThat(RuntimeHintsPredicates.reflection().onType(Service.class)).accepts(hints);
 		assertThat(RuntimeHintsPredicates.reflection()
-			.onConstructor(GraylogExtendedLogFormatProperties.Service.class.getConstructor(String.class))
-			.invoke()).accepts(hints);
+			.onConstructorInvocation(GraylogExtendedLogFormatProperties.Service.class.getConstructor(String.class)))
+			.accepts(hints);
 	}
 
 	@Test

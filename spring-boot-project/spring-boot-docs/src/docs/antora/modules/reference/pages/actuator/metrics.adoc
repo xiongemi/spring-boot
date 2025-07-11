@@ -20,7 +20,6 @@ Spring Boot Actuator provides dependency management and auto-configuration for {
 - xref:actuator/metrics.adoc#actuator.metrics.export.simple[] (in-memory)
 - xref:actuator/metrics.adoc#actuator.metrics.export.stackdriver[]
 - xref:actuator/metrics.adoc#actuator.metrics.export.statsd[]
-- xref:actuator/metrics.adoc#actuator.metrics.export.wavefront[]
 
 TIP: To learn more about Micrometer's capabilities, see its {url-micrometer-docs}[reference documentation], in particular the {url-micrometer-docs-concepts}[concepts section].
 
@@ -650,43 +649,6 @@ management:
 
 
 
-[[actuator.metrics.export.wavefront]]
-=== Wavefront
-
-The Wavefront registry periodically pushes metrics to {url-micrometer-docs-implementations}/wavefront[Wavefront].
-If you are exporting metrics to https://www.wavefront.com/[Wavefront] directly, you must provide your API token:
-
-[configprops,yaml]
-----
-management:
-  wavefront:
-    api-token: "YOUR_API_TOKEN"
-----
-
-Alternatively, you can use a Wavefront sidecar or an internal proxy in your environment to forward metrics data to the Wavefront API host:
-
-[configprops,yaml]
-----
-management:
-  wavefront:
-    uri: "proxy://localhost:2878"
-----
-
-NOTE: If you publish metrics to a Wavefront proxy (as described in https://docs.wavefront.com/proxies_installing.html[the Wavefront documentation]), the host must be in the `proxy://HOST:PORT` format.
-
-You can also change the interval at which metrics are sent to Wavefront:
-
-[configprops,yaml]
-----
-management:
-  wavefront:
-    metrics:
-      export:
-        step: "30s"
-----
-
-
-
 [[actuator.metrics.supported]]
 == Supported Metrics and Meters
 
@@ -763,6 +725,7 @@ Auto-configuration enables the instrumentation of all available javadoc:org.spri
 This will produce `"jms.message.publish"` and `"jms.message.process"` metrics respectively.
 See the {url-spring-framework-docs}/integration/observability.html#observability.jms[Spring Framework reference documentation for more information on produced observations].
 
+NOTE: javadoc:org.springframework.jms.core.JmsClient[] and javadoc:org.springframework.jms.core.JmsMessagingTemplate[] that uses a javadoc:org.springframework.jms.core.JmsTemplate[] bean are also instrumented.
 
 
 [[actuator.metrics.supported.spring-mvc]]

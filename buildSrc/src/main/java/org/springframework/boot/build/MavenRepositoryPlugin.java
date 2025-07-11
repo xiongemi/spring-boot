@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2024 the original author or authors.
+ * Copyright 2012-present the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -70,6 +70,7 @@ public class MavenRepositoryPlugin implements Plugin<Project> {
 	}
 
 	private void setUpProjectRepository(Project project, Task publishTask, File repositoryLocation) {
+		publishTask.getOutputs().dir(repositoryLocation);
 		publishTask.doFirst(new CleanAction(repositoryLocation));
 		Configuration projectRepository = project.getConfigurations().create(MAVEN_REPOSITORY_CONFIGURATION_NAME);
 		project.getArtifacts()

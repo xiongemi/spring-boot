@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2023 the original author or authors.
+ * Copyright 2012-present the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -73,13 +73,11 @@ public final class UrlDecoder {
 
 	private static int fillByteBuffer(ByteBuffer byteBuffer, String string, int index, int length) {
 		byteBuffer.clear();
-		while (true) {
+		do {
 			byteBuffer.put(unescape(string, index));
 			index += 3;
-			if (index >= length || string.charAt(index) != '%') {
-				break;
-			}
 		}
+		while (index < length && string.charAt(index) == '%');
 		byteBuffer.flip();
 		return index;
 	}
