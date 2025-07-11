@@ -316,8 +316,6 @@ class BootBuildImageIntegrationTests {
 	}
 
 	@TestTemplate
-	@EnabledOnOs(value = OS.LINUX, disabledReason = "Works with Docker Engine on Linux but is not reliable with "
-			+ "Docker Desktop on other OSs")
 	void buildsImageWithBindCaches() throws IOException {
 		writeMainClass();
 		writeLongNameResource();

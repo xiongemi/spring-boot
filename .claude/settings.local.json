@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx nx show:*)",
+      "Bash(find:*)",
+      "Bash(npx nx reset:*)",
+      "Bash(npx nx list:*)",
+      "Bash(npx nx run:*)",
+      "Bash(rm:*)",
+      "Bash(npx nx:*)",
+      "Bash(sed:*)",
+      "Bash(./gradlew:*)",
+      "Bash(chmod:*)",
+      "Bash(ls:*)",
+      "Bash(/Users/emily/code/tmp/spring-boot/remove_lock.sh)",
+      "Bash(rg:*)",
+      "Bash(grep:*)",
+      "Bash(jq:*)",
+      "Bash(node:*)",
+      "Bash(npm install)"
+    ],
+    "deny": []
+  }
+}
