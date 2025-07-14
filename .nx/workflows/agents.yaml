@@ -1,12 +1,15 @@
 launch-templates:
   linux-extra-large-plus-jvm:
     env:
-      NX_CLOUD_FORCE_USE_EXECUTE_TASKS_V3: "false"
+      NX_CLOUD_FORCE_USE_EXECUTE_TASKS_V3: "true"
+      TMPDIR: "/home/workflows/tmp"
       SERVICES_HOST: ""
       LANG: C.UTF-8
     resource-class: 'docker_linux_amd64/extra_large'
     image: 'ubuntu22.04-node20.19-v3'
     init-steps:
+      - name: Make TMP directory
+        script: mkdir /home/workflows/tmp
       - name: java version
         script: java -version
 
