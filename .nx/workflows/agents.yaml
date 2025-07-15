@@ -2,6 +2,7 @@ launch-templates:
   linux-extra-large-plus-jvm:
     env:
       NX_CLOUD_FORCE_USE_EXECUTE_TASKS_V3: "true"
+      _JAVA_OPTIONS: "-Djava.io.tmpdir=/home/workflows/tmp"
       TMPDIR: "/home/workflows/tmp"
       SERVICES_HOST: ""
       LANG: C.UTF-8
