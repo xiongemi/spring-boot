@@ -24,10 +24,12 @@ subprojects {
 		spring.mavenRepositories()
 	}
 
-	tasks.named("dockerTest") {
-		systemProperty 'java.io.tmpdir', '/home/workflows/tmp'
+	tasks.withType(Test).configureEach {
+		if (it.name == 'dockerTest') {
+			systemProperty 'java.io.tmpdir', '/home/workflows/tmp'
+		}
 	}
-
+	
 	configurations.all {
 		resolutionStrategy.cacheChangingModulesFor 0, "minutes"
 	}
