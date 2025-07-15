@@ -8,6 +8,9 @@ launch-templates:
     resource-class: 'docker_linux_amd64/extra_large'
     image: 'ubuntu22.04-node20.19-v3'
     init-steps:
+      - name: Make tmp directory in agent workflow dir
+        script: mkdir /home/workflows/tmp
+
       - name: java version
         script: java -version
 

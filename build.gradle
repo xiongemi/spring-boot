@@ -24,6 +24,12 @@ subprojects {
 		spring.mavenRepositories()
 	}
 
+	tasks.withType(Test).configureEach {
+		if (it.name == 'dockerTest') {
+			environment("_JAVA_OPTIONS", "-Djava.io.tmpdir=/home/workflows/tmp")
+		}
+	}
+
 	configurations.all {
 		resolutionStrategy.cacheChangingModulesFor 0, "minutes"
 	}
