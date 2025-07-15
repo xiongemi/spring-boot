@@ -27,4 +27,10 @@ subprojects {
 	configurations.all {
 		resolutionStrategy.cacheChangingModulesFor 0, "minutes"
 	}
+
+	tasks.withType(Test).configureEach {
+		if (it.name == 'dockerTest') {
+			environment("_JAVA_OPTIONS", "-Djava.io.tmpdir=/home/workflows/tmp")
+		}
+	}
 }
