@@ -27,10 +27,4 @@ subprojects {
 	configurations.all {
 		resolutionStrategy.cacheChangingModulesFor 0, "minutes"
 	}
-
-	tasks.withType(Test).configureEach {
-		if (it.name == 'dockerTest') {
-			systemProperty 'java.io.tmpdir', '/home/workflows/tmp'
-		}
-	}
 }
