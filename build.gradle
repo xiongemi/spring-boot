@@ -15,10 +15,6 @@ allprojects {
 	}
 }
 
-dockerTest {
-	systemProperty 'java.io.tmpdir', '/home/workflows/tmp'
-}
-
 subprojects {
 	apply plugin: "org.springframework.boot.conventions"
 
@@ -26,6 +22,10 @@ subprojects {
 		mavenLocal()
 		mavenCentral()
 		spring.mavenRepositories()
+	}
+
+	tasks.named("dockerTest") {
+		systemProperty 'java.io.tmpdir', '/home/workflows/tmp'
 	}
 
 	configurations.all {
