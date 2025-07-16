@@ -8,7 +8,7 @@ const taskRunnerUtilsPath = path.join(__dirname, '../node_modules/nx/src/tasks-r
 
 // Enhanced parseExecutor function with comprehensive logging
 const patchedParseExecutor = `function parseExecutor(executorString) {
-    console.log('DEBUG: parseExecutor called with:', executorString);
+    // console.log('DEBUG: parseExecutor called with:', executorString);
     
     // Capture call stack to identify which target is causing the issue
     const stack = new Error().stack;
@@ -35,7 +35,7 @@ const patchedParseExecutor = `function parseExecutor(executorString) {
     }
     
     const result = executorString.split(':');
-    console.log('DEBUG: parseExecutor result:', result);
+    // console.log('DEBUG: parseExecutor result:', result);
     return result;
 }`;
 
