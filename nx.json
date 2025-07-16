@@ -21,6 +21,12 @@
     ]
   },
   "targetDefaults": {
+    "ci--*": {
+      "executor": "@nx/gradle:gradle",
+      "options": {
+        "excludeDependsOn": false
+      }
+    },
     "homebrewFormula": {
       "executor": "@nx/gradle:gradle",
       "options": {
