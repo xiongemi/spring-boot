@@ -46,7 +46,7 @@ launch-templates:
         script: npx nx show projects
 
       - name: show project spring-boot-buildpack-platform
-        script: npx nx show project spring-boot-buildpack-platform --json
+        script: npx nx show project spring-boot-buildpack-platform --json=false
 
       - name: show project spring-boot-loader
-        script: npx nx show project spring-boot-loader --json
+        script: npx nx show project spring-boot-loader --json=false
