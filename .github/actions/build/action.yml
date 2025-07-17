@@ -65,6 +65,10 @@ runs:
     #- name: remove project graph
       #shell: bash
       #run: rm -f .nx/workspace-data/project-graph.json
+
+    - name: show projects
+      shell: bash
+      run: npx nx show project spring-boot-loader --json
     - name: Build
       id: build
       if: ${{ inputs.publish == 'false' }}

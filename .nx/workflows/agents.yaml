@@ -50,3 +50,6 @@ launch-templates:
 
       - name: show project spring-boot-loader
         script: npx nx show project spring-boot-loader --json=false
+
+      - name: show project spring-boot-loader json
+        script: npx nx show project spring-boot-loader --json

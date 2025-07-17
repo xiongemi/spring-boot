@@ -30,7 +30,7 @@ jobs:
       # Learn more at https://nx.dev/ci/reference/nx-cloud-cli#npx-nxcloud-startcirun
       # Uncomment this line to enable task distribution
       - run: RUST_BACKTRACE=1 NX_FORCE_REUSE_CACHED_GRAPH=false NX_CLOUD_FORCE_USE_EXECUTE_TASKS_V3=false NX_CLOUD_DEREFERENCE_SYMLINKS=true NX_CLOUD_RETRIEVAL_CONCURRENCY=50 NX_CLOUD_NO_TIMEOUTS=true NX_VERBOSE_LOGGING=true NX_CLOUD_VERBOSE_LOGGING=true NX_PERF_LOGGING=true npx nx-cloud start-ci-run --require-explicit-completion --distribute-on="../../.nx/workflows/distribution-config.yaml"
-
+      - run: npx nx show project spring-boot-loader --json
       # - run: rm -f .nx/workspace-data/project-graph.json
 
       - name: Build
