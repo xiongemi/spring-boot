@@ -40,7 +40,7 @@ launch-templates:
         uses: 'nrwl/nx-cloud-workflows/v4/workflow-steps/install-node-modules/main.yaml'
 
       - name: run gradlew nxProjectGraph
-        script: ./gradlew  :spring-boot-project:spring-boot-tools:spring-boot-maven-plugin:nxProjectGraph -PciTestTargetName=ci --info
+        script: ./gradlew :spring-boot-project:spring-boot-tools:spring-boot-maven-plugin:nxProjectGraph -PciTestTargetName=ci --info
 
       - name: Show projects
         script: npx nx show projects

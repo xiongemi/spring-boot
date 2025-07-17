@@ -50,9 +50,9 @@ outputs:
 runs:
   using: composite
   steps:
-    - name: nx show project spring-boot-loader
-      shell: bash
-      run: npx nx show project spring-boot-loader --json --verbose
+    #- name: nx show project spring-boot-loader
+      #shell: bash
+      #run: npx nx show project spring-boot-loader --json --verbose
     - name: Prepare Gradle Build
       uses: ./.github/actions/prepare-gradle-build
       with:
@@ -62,9 +62,9 @@ runs:
         java-early-access: ${{ inputs.java-early-access }}
         java-toolchain: ${{ inputs.java-toolchain }}
         java-version: ${{ inputs.java-version }}
-    - name: remove project graph
-      shell: bash
-      run: rm -f .nx/workspace-data/project-graph.json
+    #- name: remove project graph
+      #shell: bash
+      #run: rm -f .nx/workspace-data/project-graph.json
     - name: Build
       id: build
       if: ${{ inputs.publish == 'false' }}
