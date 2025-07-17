@@ -5,6 +5,7 @@ const path = require('path');
 
 const executorUtilsPath = path.join(__dirname, '../node_modules/nx/src/command-line/run/executor-utils.js');
 const taskRunnerUtilsPath = path.join(__dirname, '../node_modules/nx/src/tasks-runner/utils.js');
+const gradleProjectGraphPath = path.join(__dirname, '../node_modules/@nx/gradle/src/plugin/utils/get-project-graph-lines.js');
 
 // Enhanced parseExecutor function with comprehensive logging
 const patchedParseExecutor = `function parseExecutor(executorString) {
@@ -142,10 +143,65 @@ function patchExecutorUtils() {
         } else {
             console.log('INFO: task-runner utils.js already has enhanced logging');
         }
+
+        // Patch gradle project graph file
+        patchGradleProjectGraph();
         
     } catch (error) {
         console.error('ERROR: Failed to patch NX files:', error.message);
         process.exit(1);
+    }
+}
+
+function patchGradleProjectGraph() {
+    try {
+        if (!fs.existsSync(gradleProjectGraphPath)) {
+            console.log('INFO: Gradle project graph file not found, skipping patch');
+            return;
+        }
+
+        const originalContent = fs.readFileSync(gradleProjectGraphPath, 'utf8');
+        
+        // Check if already patched
+        if (originalContent.includes('--no-build-cache') && originalContent.includes('--rerun-tasks')) {
+            console.log('INFO: Gradle project graph file already patched');
+            return;
+        }
+
+        // Replace the gradle command arguments to add --no-build-cache and --rerun-tasks
+        const patchedContent = originalContent.replace(
+            /nxProjectGraphBuffer = await \(0, exec_gradle_1\.execGradleAsync\)\(gradlewFile, \[[\s\S]*?\]\);/,
+            `nxProjectGraphBuffer = await (0, exec_gradle_1.execGradleAsync)(gradlewFile, [
+            'nxProjectGraph',
+            \`-Phash=\${gradleConfigHash}\`,
+            '--no-configuration-cache', // disable configuration cache
+            '--parallel', // add parallel to improve performance
+            '--no-build-cache', // disable build cache to prevent stale cache issues
+            '--rerun-tasks', // force rerun tasks to ensure fresh results
+            '--warning-mode',
+            'none',
+            ...gradlePluginOptionsArgs,
+            \`-PworkspaceRoot=\${devkit_1.workspaceRoot}\`,
+            process.env.NX_VERBOSE_LOGGING ? '--info' : '',
+        ]);`
+        );
+
+        if (patchedContent !== originalContent) {
+            // Create backup
+            const backupPath = gradleProjectGraphPath + '.backup';
+            if (!fs.existsSync(backupPath)) {
+                fs.writeFileSync(backupPath, originalContent);
+                console.log('INFO: Created backup at:', backupPath);
+            }
+
+            // Write patched version
+            fs.writeFileSync(gradleProjectGraphPath, patchedContent);
+            console.log('SUCCESS: Patched gradle project graph file with --no-build-cache and --rerun-tasks');
+        } else {
+            console.log('INFO: Failed to patch gradle project graph file - pattern not found');
+        }
+    } catch (error) {
+        console.error('ERROR: Failed to patch gradle project graph file:', error.message);
     }
 }
 
