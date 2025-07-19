@@ -59,6 +59,19 @@ runs:
         java-early-access: ${{ inputs.java-early-access }}
         java-toolchain: ${{ inputs.java-toolchain }}
         java-version: ${{ inputs.java-version }}
+
+    - name: show projects
+      shell: bash
+      run: npx nx show projects
+
+      # This enables task distribution via Nx Cloud
+      # Run this command as early as possible, before dependencies are installed
+      # Learn more at https://nx.dev/ci/reference/nx-cloud-cli#npx-nxcloud-startcirun
+      # Uncomment this line to enable task distribution
+    - name: start ci run
+      shell: bash
+      run: NX_CLOUD_FORCE_USE_EXECUTE_TASKS_V3=false NX_CLOUD_DEREFERENCE_SYMLINKS=true NX_CLOUD_RETRIEVAL_CONCURRENCY=50 NX_CLOUD_NO_TIMEOUTS=true NX_VERBOSE_LOGGING=true NX_CLOUD_VERBOSE_LOGGING=true NX_PERF_LOGGING=true npx nx-cloud start-ci-run --require-explicit-completion --distribute-on="../../.nx/workflows/distribution-config.yaml"
+
     - name: Build
       id: build
       if: ${{ inputs.publish == 'false' }}
@@ -79,6 +92,11 @@ runs:
 #        COMMERCIAL_REPO_USERNAME: ${{ inputs.commercial-repository-username }}
 #        COMMERCIAL_SNAPSHOT_REPO_URL: ${{ inputs.commercial-snapshot-repository-url }}
 #      run: ./gradlew -PdeploymentRepository=$(pwd)/deployment-repository ${{ !startsWith(github.event.head_commit.message, 'Next development version') && 'build' || '' }} publishAllPublicationsToDeploymentRepository
+    
+    - name: Stop nx cloud agents
+      if: always()
+      shell: bash
+      run: npx nx-cloud complete-ci-run
     - name: Read Version From gradle.properties
       id: read-version
       shell: bash
