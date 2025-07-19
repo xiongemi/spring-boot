@@ -3,5 +3,11 @@
   "dependencies": {
     "@nx/gradle": "21.3.0",
     "nx": "21.3.0"
+  },
+  "scripts": {
+    "debug-targets": "./test-targets.sh",
+    "debug-build": "node debug-nx-targets.js 'npx nx run-many -t build-ci --parallel=32 --batch --outputStyle=stream'",
+    "postinstall": "echo '⚠️  If you get target configuration errors, run: npm run debug-targets'",
+    "postci": "echo '✅ CI completed. If there were target errors, check the debug output above.'"
   }
 }
