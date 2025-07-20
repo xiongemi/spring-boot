@@ -44,17 +44,23 @@ const replacement = `function getTargetConfigurationForTask(task, projectGraph) 
     // SPRING_BOOT_DEBUG: Log task details before potential error
     console.log('🎯 SPRING_BOOT_DEBUG: Processing target:', task.target.target, 'for project:', task.target.project);
     
-    if (!projectGraph?.nodes?.[task.target.project]) {
-        console.log('❌ SPRING_BOOT_DEBUG: Project not found in projectGraph.nodes:', task.target.project);
-        console.log('❌ SPRING_BOOT_DEBUG: Available projects:', Object.keys(projectGraph?.nodes || {}));
-        throw new Error(\`Project \${task.target.project} not found in projectGraph.nodes\`);
-    }
-    
-    const project = projectGraph.nodes[task.target.project].data;`;
+    try {
+        const project = projectGraph.nodes[task.target.project].data;`;
 
 if (originalPattern.test(content)) {
-  // Patch the function 
+  // Patch the function start
   content = content.replace(originalPattern, replacement);
+  
+  // Add the closing try-catch block around the return statement
+  const returnPattern = /(\s+return project\.targets\[task\.target\.target\];)\s*}/;
+  content = content.replace(returnPattern, `$1
+    } catch (error) {
+        console.log('❌ SPRING_BOOT_DEBUG: Error accessing project data for:', task.target.project);
+        // console.log('❌ SPRING_BOOT_DEBUG: Available projects:', Object.keys(projectGraph?.nodes || {}));
+        console.log('❌ SPRING_BOOT_DEBUG: Error details:', error.message);
+        throw error;
+    }
+}`);
   
   fs.writeFileSync(utilsPath, content);
   console.log('✅ Successfully patched NX utils.js with debug logging');
@@ -70,13 +76,15 @@ if (originalPattern.test(content)) {
       replacement: `// SPRING_BOOT_DEBUG: Log task details before potential error
     console.log('🎯 SPRING_BOOT_DEBUG: Processing target:', task.target.target, 'for project:', task.target.project);
     
-    if (!projectGraph?.nodes?.[task.target.project]) {
-        console.log('❌ SPRING_BOOT_DEBUG: Project not found in projectGraph.nodes:', task.target.project);
-        console.log('❌ SPRING_BOOT_DEBUG: Available projects:', Object.keys(projectGraph?.nodes || {}));
-        throw new Error(\`Project \${task.target.project} not found in projectGraph.nodes\`);
-    }
-    
-    const project = projectGraph.nodes[task.target.project].data;`,
+    let project;
+    try {
+        project = projectGraph.nodes[task.target.project].data;
+    } catch (error) {
+        console.log('❌ SPRING_BOOT_DEBUG: Error accessing project data for:', task.target.project);
+        // console.log('❌ SPRING_BOOT_DEBUG: Available projects:', Object.keys(projectGraph?.nodes || {}));
+        console.log('❌ SPRING_BOOT_DEBUG: Error details:', error.message);
+        throw error;
+    }`,
       name: 'simple pattern'
     },
     // Even simpler - just add logging before the line
