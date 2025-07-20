@@ -43,7 +43,6 @@ const originalPattern = /function getTargetConfigurationForTask\(task, projectGr
 const replacement = `function getTargetConfigurationForTask(task, projectGraph) {
     // SPRING_BOOT_DEBUG: Log task details before potential error
     console.log('🎯 SPRING_BOOT_DEBUG: Processing target:', task.target.target, 'for project:', task.target.project);
-    console.log('🎯 SPRING_BOOT_DEBUG: Available projects in projectGraph.nodes:', Object.keys(projectGraph?.nodes || {}));
     
     if (!projectGraph?.nodes?.[task.target.project]) {
         console.log('❌ SPRING_BOOT_DEBUG: Project not found in projectGraph.nodes:', task.target.project);
@@ -70,7 +69,6 @@ if (originalPattern.test(content)) {
       pattern: /const project = projectGraph\.nodes\[task\.target\.project\]\.data;/,
       replacement: `// SPRING_BOOT_DEBUG: Log task details before potential error
     console.log('🎯 SPRING_BOOT_DEBUG: Processing target:', task.target.target, 'for project:', task.target.project);
-    console.log('🎯 SPRING_BOOT_DEBUG: Available projects in projectGraph.nodes:', Object.keys(projectGraph?.nodes || {}));
     
     if (!projectGraph?.nodes?.[task.target.project]) {
         console.log('❌ SPRING_BOOT_DEBUG: Project not found in projectGraph.nodes:', task.target.project);
@@ -84,7 +82,7 @@ if (originalPattern.test(content)) {
     // Even simpler - just add logging before the line
     {
       pattern: /(const project = projectGraph\.nodes\[task\.target\.project\]\.data;)/,
-      replacement: `console.log('🎯 SPRING_BOOT_DEBUG: Processing target:', task.target.target, 'for project:', task.target.project, '- Available projects:', Object.keys(projectGraph?.nodes || {}));
+      replacement: `console.log('🎯 SPRING_BOOT_DEBUG: Processing target:', task.target.target, 'for project:', task.target.project);
     $1`,
       name: 'minimal pattern'
     }
