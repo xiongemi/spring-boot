@@ -5,11 +5,17 @@ permissions:
 jobs:
   build:
     name: Build Pull Request
-    if: ${{ github.repository == 'spring-projects/spring-boot' }}
     runs-on: ${{ vars.UBUNTU_MEDIUM || 'ubuntu-latest' }}
     steps:
       - name: Check Out Code
         uses: actions/checkout@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          check-latest: true
+          cache: npm
+      - run: npm install
       - name: Build
         id: build
         uses: ./.github/actions/build
