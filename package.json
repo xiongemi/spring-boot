@@ -2,7 +2,7 @@
   "name": "spring-boot",
   "dependencies": {
     "@nx/gradle": "21.3.0",
-    "nx": "21.3.0"
+    "nx": "0.0.0-pr-32003-86be0dc"
   },
   "scripts": {
     "debug-targets": "./test-targets.sh",
