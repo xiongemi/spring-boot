@@ -22,7 +22,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.junit.jupiter.api.Test;
 
-import org.springframework.boot.loader.tools.JavaExecutable;
+
 import org.springframework.util.FileCopyUtils;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -38,9 +38,9 @@ class SampleAntApplicationIT {
 	@Test
 	void runJar() throws Exception {
 		File libs = new File("build/ant/libs");
-		Process process = new JavaExecutable().processBuilder("-jar", "spring-boot-smoke-test-ant.jar")
-			.directory(libs)
-			.start();
+		ProcessBuilder processBuilder = new ProcessBuilder(new File(System.getProperty("java.home"), "bin/java").getAbsolutePath(),
+				"-jar", "spring-boot-smoke-test-ant.jar");
+		Process process = processBuilder.directory(libs).start();
 		process.waitFor(5, TimeUnit.MINUTES);
 		assertThat(process.exitValue()).isZero();
 		String output = FileCopyUtils.copyToString(new InputStreamReader(process.getInputStream()));
