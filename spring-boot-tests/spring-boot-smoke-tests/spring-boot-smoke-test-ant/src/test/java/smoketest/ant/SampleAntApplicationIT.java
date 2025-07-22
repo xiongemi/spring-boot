@@ -22,7 +22,6 @@ import java.util.concurrent.TimeUnit;
 
 import org.junit.jupiter.api.Test;
 
-
 import org.springframework.util.FileCopyUtils;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -38,13 +37,27 @@ class SampleAntApplicationIT {
 	@Test
 	void runJar() throws Exception {
 		File libs = new File("build/ant/libs");
-		ProcessBuilder processBuilder = new ProcessBuilder(new File(System.getProperty("java.home"), "bin/java").getAbsolutePath(),
-				"-jar", "spring-boot-smoke-test-ant.jar");
+		String javaExecutable = findJavaExecutable();
+		ProcessBuilder processBuilder = new ProcessBuilder(javaExecutable, "-jar", "spring-boot-smoke-test-ant.jar");
 		Process process = processBuilder.directory(libs).start();
 		process.waitFor(5, TimeUnit.MINUTES);
 		assertThat(process.exitValue()).isZero();
 		String output = FileCopyUtils.copyToString(new InputStreamReader(process.getInputStream()));
 		assertThat(output).contains("Spring Boot Ant Example");
+	}
+
+	private String findJavaExecutable() {
+		// First try java.home system property
+		String javaHome = System.getProperty("java.home");
+		if (javaHome != null) {
+			File javaExecutable = new File(javaHome, "bin/java");
+			if (javaExecutable.exists() && javaExecutable.canExecute()) {
+				return javaExecutable.getAbsolutePath();
+			}
+		}
+
+		// Fallback to PATH
+		return "java";
 	}
 
 }
