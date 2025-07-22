@@ -17,7 +17,7 @@ launch-templates:
       - name: Checkout
         uses: 'nrwl/nx-cloud-workflows/v3.6/workflow-steps/checkout/main.yaml'
 
-      - name: Setup Java 21
+      - name: Setup Java 17
         script: |
           sudo apt update
           sudo apt install -y openjdk-21-jdk openssh-server neovim lynx fzf
