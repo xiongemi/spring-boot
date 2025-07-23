@@ -47,16 +47,7 @@ class SampleAntApplicationIT {
 	}
 
 	private String findJavaExecutable() {
-		// First try java.home system property
-		String javaHome = System.getProperty("java.home");
-		if (javaHome != null) {
-			File javaExecutable = new File(javaHome, "bin/java");
-			if (javaExecutable.exists() && javaExecutable.canExecute()) {
-				return javaExecutable.getAbsolutePath();
-			}
-		}
-
-		// Fallback to PATH
+		// Fallback to PATH first in CI environment
 		return "java";
 	}
 

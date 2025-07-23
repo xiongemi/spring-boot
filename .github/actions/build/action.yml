@@ -83,7 +83,7 @@ runs:
         COMMERCIAL_SNAPSHOT_REPO_URL: ${{ inputs.commercial-snapshot-repository-url }}
       run: |
         echo "🔍 Running with debug logging to identify problematic targets..."
-        node debug-nx-targets.js "NX_BATCH_MODE=true NX_CLOUD_DEREFERENCE_SYMLINKS=true NX_VERBOSE_LOGGING=true NX_PERF_LOGGING=true NX_CLOUD_NO_TIMEOUTS=true NX_CLOUD_VERBOSE_LOGGING=true npx nx run-many -t build-ci --parallel=32 --batch --outputStyle=stream"
+        node debug-nx-targets.js "NX_BATCH_MODE=true NX_CLOUD_DEREFERENCE_SYMLINKS=true NX_VERBOSE_LOGGING=true NX_PERF_LOGGING=true NX_CLOUD_NO_TIMEOUTS=true NX_CLOUD_VERBOSE_LOGGING=true npx nx run spring-boot-smoke-test-ant:test --parallel=32 --batch --outputStyle=stream"
 #    - name: Publish
 #      id: publish
 #      if: ${{ inputs.publish == 'true' }}
