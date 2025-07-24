@@ -40,8 +40,23 @@ class SampleAntApplicationIT {
 	void runJar() throws Exception {
 		File libs = new File("build/ant/libs");
 		String javaExecutable = findJavaExecutable();
-		ProcessBuilder processBuilder = new ProcessBuilder(javaExecutable, "-jar", "spring-boot-smoke-test-ant.jar");
+		File javaFile = new File(javaExecutable);
+		System.out.println("Using Java executable: " + javaExecutable);
+		System.out.println("Java executable exists: " + javaFile.exists());
+		System.out.println("Java executable canExecute: " + javaFile.canExecute());
+		System.out.println("Java executable canRead: " + javaFile.canRead());
+		System.out.println("java.home: " + System.getProperty("java.home"));
+		System.out.println("Working directory: " + System.getProperty("user.dir"));
+		System.out.println("Current directory files: " + java.util.Arrays.toString(new File(".").list()));
+		System.out.println("Libs directory exists: " + libs.exists());
+		System.out.println("Libs directory files: " + java.util.Arrays.toString(libs.list()));
+		
+		ProcessBuilder processBuilder = new ProcessBuilder("java", "-jar", "spring-boot-smoke-test-ant.jar");
 		processBuilder.inheritIO();
+		// Set PATH to include Java bin directory
+		java.util.Map<String, String> env = processBuilder.environment();
+		String currentPath = env.get("PATH");
+		env.put("PATH", "/usr/lib/jvm/java-17-openjdk-amd64/bin" + (currentPath != null ? ":" + currentPath : ""));
 		Process process = processBuilder.directory(libs).start();
 		process.waitFor(5, TimeUnit.MINUTES);
 		assertThat(process.exitValue()).isZero();
