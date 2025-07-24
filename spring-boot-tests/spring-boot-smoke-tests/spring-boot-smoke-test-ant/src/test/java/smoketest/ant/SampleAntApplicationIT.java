@@ -48,27 +48,20 @@ class SampleAntApplicationIT {
 		
 		File libs = new File("build/ant/libs");
 		System.out.println("Libs directory exists: " + libs.exists());
+		System.out.println("Libs directory files: " + java.util.Arrays.toString(libs.list()));
 		
-		// Create libs directory if it doesn't exist
-		if (!libs.exists()) {
-			libs.mkdirs();
-			System.out.println("Created libs directory");
+		// Look for any JAR files in the libs directory
+		File[] jarFiles = libs.listFiles((dir, name) -> name.endsWith(".jar"));
+		System.out.println("JAR files in libs: " + java.util.Arrays.toString(jarFiles));
+		
+		String jarName = "spring-boot-smoke-test-ant.jar";
+		if (jarFiles != null && jarFiles.length > 0) {
+			// Use the first JAR file found
+			jarName = jarFiles[0].getName();
+			System.out.println("Using JAR file: " + jarName);
 		}
 		
-		// Check if JAR exists in libs directory
-		File jarFile = new File(libs, "spring-boot-smoke-test-ant.jar");
-		System.out.println("JAR file exists: " + jarFile.exists());
-		
-		// If JAR doesn't exist in libs, look for it in build/ant
-		if (!jarFile.exists()) {
-			jarFile = new File(antDir, "spring-boot-smoke-test-ant.jar");
-			System.out.println("JAR file in ant dir exists: " + jarFile.exists());
-			if (jarFile.exists()) {
-				libs = antDir;
-			}
-		}
-		
-		ProcessBuilder processBuilder = new ProcessBuilder("java", "-jar", "spring-boot-smoke-test-ant.jar");
+		ProcessBuilder processBuilder = new ProcessBuilder("java", "-jar", jarName);
 		processBuilder.inheritIO();
 		// Set PATH to include Java bin directory
 		java.util.Map<String, String> env = processBuilder.environment();
