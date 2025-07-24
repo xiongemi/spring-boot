@@ -38,18 +38,35 @@ class SampleAntApplicationIT {
 	@Test
 	@EnabledIf("isJavaExecutableAvailable")
 	void runJar() throws Exception {
+		File buildDir = new File("build");
+		System.out.println("Build directory exists: " + buildDir.exists());
+		System.out.println("Build directory files: " + java.util.Arrays.toString(buildDir.list()));
+		
+		File antDir = new File("build/ant");
+		System.out.println("Ant directory exists: " + antDir.exists());
+		System.out.println("Ant directory files: " + java.util.Arrays.toString(antDir.list()));
+		
 		File libs = new File("build/ant/libs");
-		String javaExecutable = findJavaExecutable();
-		File javaFile = new File(javaExecutable);
-		System.out.println("Using Java executable: " + javaExecutable);
-		System.out.println("Java executable exists: " + javaFile.exists());
-		System.out.println("Java executable canExecute: " + javaFile.canExecute());
-		System.out.println("Java executable canRead: " + javaFile.canRead());
-		System.out.println("java.home: " + System.getProperty("java.home"));
-		System.out.println("Working directory: " + System.getProperty("user.dir"));
-		System.out.println("Current directory files: " + java.util.Arrays.toString(new File(".").list()));
 		System.out.println("Libs directory exists: " + libs.exists());
-		System.out.println("Libs directory files: " + java.util.Arrays.toString(libs.list()));
+		
+		// Create libs directory if it doesn't exist
+		if (!libs.exists()) {
+			libs.mkdirs();
+			System.out.println("Created libs directory");
+		}
+		
+		// Check if JAR exists in libs directory
+		File jarFile = new File(libs, "spring-boot-smoke-test-ant.jar");
+		System.out.println("JAR file exists: " + jarFile.exists());
+		
+		// If JAR doesn't exist in libs, look for it in build/ant
+		if (!jarFile.exists()) {
+			jarFile = new File(antDir, "spring-boot-smoke-test-ant.jar");
+			System.out.println("JAR file in ant dir exists: " + jarFile.exists());
+			if (jarFile.exists()) {
+				libs = antDir;
+			}
+		}
 		
 		ProcessBuilder processBuilder = new ProcessBuilder("java", "-jar", "spring-boot-smoke-test-ant.jar");
 		processBuilder.inheritIO();
