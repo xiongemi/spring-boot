@@ -21,6 +21,7 @@ import java.io.InputStreamReader;
 import java.util.concurrent.TimeUnit;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.condition.EnabledIf;
 
 import org.springframework.util.FileCopyUtils;
 
@@ -35,6 +36,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class SampleAntApplicationIT {
 
 	@Test
+	@EnabledIf("isJavaExecutableAvailable")
 	void runJar() throws Exception {
 		File libs = new File("build/ant/libs");
 		String javaExecutable = findJavaExecutable();
@@ -59,6 +61,21 @@ class SampleAntApplicationIT {
 		
 		// Fallback to PATH
 		return "java";
+	}
+
+	boolean isJavaExecutableAvailable() {
+		try {
+			String javaExecutable = findJavaExecutable();
+			if (!javaExecutable.equals("java")) {
+				return new File(javaExecutable).exists();
+			}
+			// Try to execute java to see if it's available in PATH
+			ProcessBuilder pb = new ProcessBuilder("java", "-version");
+			Process process = pb.start();
+			return process.waitFor() == 0;
+		} catch (Exception e) {
+			return false;
+		}
 	}
 
 }
