@@ -60,10 +60,6 @@ runs:
         java-toolchain: ${{ inputs.java-toolchain }}
         java-version: ${{ inputs.java-version }}
 
-    - name: show projects
-      shell: bash
-      run: npx nx show projects
-
       # This enables task distribution via Nx Cloud
       # Run this command as early as possible, before dependencies are installed
       # Learn more at https://nx.dev/ci/reference/nx-cloud-cli#npx-nxcloud-startcirun
@@ -83,7 +79,7 @@ runs:
         COMMERCIAL_SNAPSHOT_REPO_URL: ${{ inputs.commercial-snapshot-repository-url }}
       run: |
         echo "🔍 Running with debug logging to identify problematic targets..."
-        node debug-nx-targets.js "NX_BATCH_MODE=true NX_CLOUD_DEREFERENCE_SYMLINKS=true NX_VERBOSE_LOGGING=true NX_PERF_LOGGING=true NX_CLOUD_NO_TIMEOUTS=true NX_CLOUD_VERBOSE_LOGGING=true npx nx run spring-boot-smoke-test-ant:test --parallel=32 --batch --outputStyle=stream"
+        node debug-nx-targets.js "NX_BATCH_MODE=true NX_CLOUD_DEREFERENCE_SYMLINKS=true NX_VERBOSE_LOGGING=true NX_PERF_LOGGING=true NX_CLOUD_NO_TIMEOUTS=true NX_CLOUD_VERBOSE_LOGGING=true npx nx run-many -t build-ci --parallel=32 --batch --outputStyle=stream"
 #    - name: Publish
 #      id: publish
 #      if: ${{ inputs.publish == 'true' }}
