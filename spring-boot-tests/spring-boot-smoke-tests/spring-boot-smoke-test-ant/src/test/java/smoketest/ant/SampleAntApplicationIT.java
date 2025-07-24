@@ -41,26 +41,26 @@ class SampleAntApplicationIT {
 		File buildDir = new File("build");
 		System.out.println("Build directory exists: " + buildDir.exists());
 		System.out.println("Build directory files: " + java.util.Arrays.toString(buildDir.list()));
-		
+
 		File antDir = new File("build/ant");
 		System.out.println("Ant directory exists: " + antDir.exists());
 		System.out.println("Ant directory files: " + java.util.Arrays.toString(antDir.list()));
-		
+
 		File libs = new File("build/ant/libs");
 		System.out.println("Libs directory exists: " + libs.exists());
 		System.out.println("Libs directory files: " + java.util.Arrays.toString(libs.list()));
-		
+
 		// Look for any JAR files in the libs directory
 		File[] jarFiles = libs.listFiles((dir, name) -> name.endsWith(".jar"));
 		System.out.println("JAR files in libs: " + java.util.Arrays.toString(jarFiles));
-		
+
 		String jarName = "spring-boot-smoke-test-ant.jar";
 		if (jarFiles != null && jarFiles.length > 0) {
 			// Use the first JAR file found
 			jarName = jarFiles[0].getName();
 			System.out.println("Using JAR file: " + jarName);
 		}
-		
+
 		ProcessBuilder processBuilder = new ProcessBuilder("java", "-jar", jarName);
 		// Set PATH to include Java bin directory
 		java.util.Map<String, String> env = processBuilder.environment();
@@ -83,7 +83,7 @@ class SampleAntApplicationIT {
 				return javaExecutable.getAbsolutePath();
 			}
 		}
-		
+
 		// Fallback to PATH
 		return "java";
 	}
@@ -98,7 +98,8 @@ class SampleAntApplicationIT {
 			ProcessBuilder pb = new ProcessBuilder("java", "-version");
 			Process process = pb.start();
 			return process.waitFor() == 0;
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			return false;
 		}
 	}
