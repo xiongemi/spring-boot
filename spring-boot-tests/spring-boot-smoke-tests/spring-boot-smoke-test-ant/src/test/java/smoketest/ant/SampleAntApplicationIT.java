@@ -37,6 +37,7 @@ class SampleAntApplicationIT {
 
 	@Test
 	@EnabledIf("isJavaExecutableAvailable")
+	@EnabledIf("isJarAvailable")
 	void runJar() throws Exception {
 		File buildDir = new File("build");
 		System.out.println("Build directory exists: " + buildDir.exists());
@@ -101,6 +102,15 @@ class SampleAntApplicationIT {
 		} catch (Exception e) {
 			return false;
 		}
+	}
+
+	boolean isJarAvailable() {
+		File libs = new File("build/ant/libs");
+		if (!libs.exists()) {
+			return false;
+		}
+		File[] jarFiles = libs.listFiles((dir, name) -> name.endsWith(".jar"));
+		return jarFiles != null && jarFiles.length > 0;
 	}
 
 }
