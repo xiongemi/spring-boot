@@ -36,8 +36,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class SampleAntApplicationIT {
 
 	@Test
-	@EnabledIf("isJavaExecutableAvailable")
-	@EnabledIf("isJarAvailable")
+	@EnabledIf("isTestEnabled")
 	void runJar() throws Exception {
 		File buildDir = new File("build");
 		System.out.println("Build directory exists: " + buildDir.exists());
@@ -63,7 +62,6 @@ class SampleAntApplicationIT {
 		}
 		
 		ProcessBuilder processBuilder = new ProcessBuilder("java", "-jar", jarName);
-		processBuilder.inheritIO();
 		// Set PATH to include Java bin directory
 		java.util.Map<String, String> env = processBuilder.environment();
 		String currentPath = env.get("PATH");
@@ -72,6 +70,7 @@ class SampleAntApplicationIT {
 		process.waitFor(5, TimeUnit.MINUTES);
 		assertThat(process.exitValue()).isZero();
 		String output = FileCopyUtils.copyToString(new InputStreamReader(process.getInputStream()));
+		System.out.println("Application output: '" + output + "'");
 		assertThat(output).contains("Spring Boot Ant Example");
 	}
 
@@ -111,6 +110,10 @@ class SampleAntApplicationIT {
 		}
 		File[] jarFiles = libs.listFiles((dir, name) -> name.endsWith(".jar"));
 		return jarFiles != null && jarFiles.length > 0;
+	}
+
+	boolean isTestEnabled() {
+		return isJavaExecutableAvailable() && isJarAvailable();
 	}
 
 }
