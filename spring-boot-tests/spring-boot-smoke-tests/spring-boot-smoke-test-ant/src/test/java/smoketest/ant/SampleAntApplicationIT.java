@@ -39,6 +39,7 @@ class SampleAntApplicationIT {
 		File libs = new File("build/ant/libs");
 		String javaExecutable = findJavaExecutable();
 		ProcessBuilder processBuilder = new ProcessBuilder(javaExecutable, "-jar", "spring-boot-smoke-test-ant.jar");
+		processBuilder.inheritIO();
 		Process process = processBuilder.directory(libs).start();
 		process.waitFor(5, TimeUnit.MINUTES);
 		assertThat(process.exitValue()).isZero();
@@ -47,7 +48,16 @@ class SampleAntApplicationIT {
 	}
 
 	private String findJavaExecutable() {
-		// Fallback to PATH first in CI environment
+		// Use the same Java executable that's running the current JVM
+		String javaHome = System.getProperty("java.home");
+		if (javaHome != null) {
+			File javaExecutable = new File(javaHome, "bin/java");
+			if (javaExecutable.exists()) {
+				return javaExecutable.getAbsolutePath();
+			}
+		}
+		
+		// Fallback to PATH
 		return "java";
 	}
 
