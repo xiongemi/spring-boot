@@ -65,7 +65,7 @@ class SampleAntApplicationIT {
 		// Set PATH to include Java bin directory
 		java.util.Map<String, String> env = processBuilder.environment();
 		String currentPath = env.get("PATH");
-		env.put("PATH", "/usr/lib/jvm/java-17-openjdk-amd64/bin" + (currentPath != null ? ":" + currentPath : ""));
+		env.put("PATH", "/usr/lib/jvm/java-17-openjdk-amd64/bin" + ((currentPath != null) ? ":" + currentPath : ""));
 		Process process = processBuilder.directory(libs).start();
 		process.waitFor(5, TimeUnit.MINUTES);
 		assertThat(process.exitValue()).isZero();
@@ -99,7 +99,7 @@ class SampleAntApplicationIT {
 			Process process = pb.start();
 			return process.waitFor() == 0;
 		}
-		catch (Exception e) {
+		catch (Exception ex) {
 			return false;
 		}
 	}
