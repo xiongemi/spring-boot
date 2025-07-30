@@ -44,6 +44,17 @@ const replacement = `function getTargetConfigurationForTask(task, projectGraph) 
     // SPRING_BOOT_DEBUG: Log task details before potential error
     console.log('🎯 SPRING_BOOT_DEBUG: Processing target:', task.target.target, 'for project:', task.target.project);
     
+    // Add global error handler for split errors
+    const originalSplit = String.prototype.split;
+    String.prototype.split = function(...args) {
+        if (this === undefined || this === null) {
+            console.log('❌ SPRING_BOOT_DEBUG: split() called on undefined/null value');
+            console.log('❌ SPRING_BOOT_DEBUG: Current task:', task.target.target, 'project:', task.target.project);
+            console.trace('Split error stack trace');
+        }
+        return originalSplit.apply(this, args);
+    };
+    
     try {
         const project = projectGraph.nodes[task.target.project].data;`;
 
@@ -75,6 +86,8 @@ if (originalPattern.test(content)) {
       pattern: /const project = projectGraph\.nodes\[task\.target\.project\]\.data;/,
       replacement: `// SPRING_BOOT_DEBUG: Log task details before potential error
     console.log('🎯 SPRING_BOOT_DEBUG: Processing target:', task.target.target, 'for project:', task.target.project);
+    console.log('🎯 SPRING_BOOT_DEBUG: Task object:', JSON.stringify(task, null, 2));
+    // console.log('🎯 SPRING_BOOT_DEBUG: ProjectGraph nodes keys:', Object.keys(projectGraph?.nodes || {}));
     
     let project;
     try {
@@ -83,6 +96,7 @@ if (originalPattern.test(content)) {
         console.log('❌ SPRING_BOOT_DEBUG: Error accessing project data for:', task.target.project);
         // console.log('❌ SPRING_BOOT_DEBUG: Available projects:', Object.keys(projectGraph?.nodes || {}));
         console.log('❌ SPRING_BOOT_DEBUG: Error details:', error.message);
+        console.log('❌ SPRING_BOOT_DEBUG: Stack trace:', error.stack);
         throw error;
     }`,
       name: 'simple pattern'

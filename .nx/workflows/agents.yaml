@@ -6,7 +6,6 @@ launch-templates:
       SERVICES_HOST: ""
       LANG: C.UTF-8
       JAVA_HOME: /usr/lib/jvm/java-17-openjdk-amd64
-      PATH: /usr/lib/jvm/java-17-openjdk-amd64/bin:/usr/local/bin:/usr/bin:/bin
     resource-class: 'docker_linux_amd64/extra_large+'
     image: 'ubuntu22.04-node20.11-v10'
     init-steps:
