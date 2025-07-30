@@ -43,6 +43,7 @@ dependencies {
 tasks.register("syncTestRepository", Sync) {
 	destinationDir = file(layout.buildDirectory.dir("test-repository"))
 	from configurations.testRepository
+	duplicatesStrategy = DuplicatesStrategy.WARN
 	rename {
 		it.replaceAll("-[0-9]+\\.[0-9]+-[0-9]+\\.", "-SNAPSHOT.")
 	}
