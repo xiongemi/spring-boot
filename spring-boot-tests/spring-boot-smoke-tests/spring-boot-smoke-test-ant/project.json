@@ -1,0 +1,10 @@
+{
+  "targets": {
+    "test": {
+      "options": {
+        "executor": "@nx/gradle:gradle",
+        "excludeDependsOn": false
+      }
+    }
+  }
+}

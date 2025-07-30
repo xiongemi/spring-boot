@@ -1,0 +1,13 @@
+{
+  "name": "spring-boot",
+  "dependencies": {
+    "@nx/gradle": "21.3.0",
+    "nx": "0.0.0-pr-32003-86be0dc"
+  },
+  "scripts": {
+    "debug-targets": "./test-targets.sh",
+    "debug-build": "node debug-nx-targets.js 'npx nx run-many -t build-ci --parallel=32 --batch --outputStyle=stream'",
+    "postinstall": "node patch-nx-debug.js",
+    "postci": "echo '✅ CI completed. If there were target errors, check the debug output above.'"
+  }
+}

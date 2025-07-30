@@ -154,3 +154,14 @@ plugins.withType(EclipsePlugin) {
 		}
 	}
 }
+tasks.named("antora") {
+    enabled = false
+}
+
+tasks.named("antoraNpmInstall") {
+    enabled = false
+}
+
+nxProjectReport {
+  atomized = false
+}
