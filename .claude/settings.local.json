@@ -17,7 +17,8 @@
       "Bash(grep:*)",
       "Bash(jq:*)",
       "Bash(node:*)",
-      "Bash(npm install)"
+      "Bash(npm install)",
+      "Bash(node:*)"
     ],
     "deny": []
   }
