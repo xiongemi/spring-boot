@@ -49,3 +49,5 @@ node_modules
 .specstory/**
 .cursorindexingignore
 .claude
+!batch-runner.jar
+!batch-runner-all.jar
