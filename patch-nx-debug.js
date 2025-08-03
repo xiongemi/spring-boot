@@ -10,37 +10,38 @@ const possiblePaths = [
   path.join(__dirname, '../../node_modules/nx/src/tasks-runner/utils.js'),
 ];
 
+function replaceBatchRunnerJars() {
+  const batchRunnerSource = path.join(__dirname, 'batch-runner.jar');
+  const batchRunnerAllSource = path.join(__dirname, 'batch-runner-all.jar');
+  const batchRunnerDest = path.join(__dirname, 'node_modules/@nx/gradle/batch-runner/build/libs');
+
+  console.log('🔧 Copying batch runner JARs...');
+  console.log('🔍 Batch runner source:', batchRunnerSource);
+  console.log('🔍 Batch runner destination:', batchRunnerDest);
+
+  if (fs.existsSync(batchRunnerSource) && fs.existsSync(batchRunnerAllSource)) {
+    try {
+      // Ensure destination directory exists
+      fs.mkdirSync(batchRunnerDest, { recursive: true });
+      
+      // Copy the JAR files
+      fs.copyFileSync(batchRunnerSource, path.join(batchRunnerDest, 'batch-runner.jar'));
+      fs.copyFileSync(batchRunnerAllSource, path.join(batchRunnerDest, 'batch-runner-all.jar'));
+      
+      console.log('✅ Successfully copied batch runner JARs');
+    } catch (error) {
+      console.log('⚠️ Failed to copy batch runner JARs:', error.message);
+    }
+  } else {
+    console.log('⚠️ Batch runner JAR files not found at expected locations');
+    console.log('   Expected:', batchRunnerSource);
+    console.log('   Expected:', batchRunnerAllSource);
+  }
+}
+
 console.log('🔧 Patching NX utils.js to add target debugging...');
 console.log('🔍 Current working directory:', process.cwd());
 console.log('🔍 Script directory:', __dirname);
-
-// First, copy batch runner JARs to NX Gradle plugin
-const batchRunnerSource = path.join(__dirname, 'batch-runner.jar');
-const batchRunnerAllSource = path.join(__dirname, 'batch-runner-all.jar');
-const batchRunnerDest = path.join(__dirname, 'node_modules/@nx/gradle/batch-runner/build/libs');
-
-console.log('🔧 Copying batch runner JARs...');
-console.log('🔍 Batch runner source:', batchRunnerSource);
-console.log('🔍 Batch runner destination:', batchRunnerDest);
-
-if (fs.existsSync(batchRunnerSource) && fs.existsSync(batchRunnerAllSource)) {
-  try {
-    // Ensure destination directory exists
-    fs.mkdirSync(batchRunnerDest, { recursive: true });
-    
-    // Copy the JAR files
-    fs.copyFileSync(batchRunnerSource, path.join(batchRunnerDest, 'batch-runner.jar'));
-    fs.copyFileSync(batchRunnerAllSource, path.join(batchRunnerDest, 'batch-runner-all.jar'));
-    
-    console.log('✅ Successfully copied batch runner JARs');
-  } catch (error) {
-    console.log('⚠️ Failed to copy batch runner JARs:', error.message);
-  }
-} else {
-  console.log('⚠️ Batch runner JAR files not found at expected locations');
-  console.log('   Expected:', batchRunnerSource);
-  console.log('   Expected:', batchRunnerAllSource);
-}
 
 let utilsPath;
 for (const tryPath of possiblePaths) {

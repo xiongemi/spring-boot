@@ -6,7 +6,6 @@ const path = require('path');
 console.log('🔄 Restoring original NX files...');
 
 const files = [
-  "node_modules/nx/bin/nx.js",
   "node_modules/nx/bin/run-executor.js",
   "node_modules/nx/src/tasks-runner/utils.js",
   "node_modules/nx/src/tasks-runner/default-tasks-runner.js",
