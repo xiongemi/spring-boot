@@ -54,6 +54,15 @@ const criticalFiles = [
   // NX Cloud related files
   'node_modules/nx/src/nx-cloud/nx-cloud-tasks-runner-shell.js',
   
+  // Duplicate NX installation in @nx/gradle plugin - CRITICAL for fixing distributed execution
+  'node_modules/@nx/gradle/node_modules/nx/bin/run-executor.js',
+  'node_modules/@nx/gradle/node_modules/nx/src/tasks-runner/utils.js',
+  'node_modules/@nx/gradle/node_modules/nx/src/tasks-runner/default-tasks-runner.js',
+  'node_modules/@nx/gradle/node_modules/nx/src/tasks-runner/forked-process-task-runner.js',
+  'node_modules/@nx/gradle/node_modules/nx/src/tasks-runner/fork.js',
+  'node_modules/@nx/gradle/node_modules/nx/src/tasks-runner/batch/run-batch.js',
+  'node_modules/@nx/gradle/node_modules/nx/src/nx-cloud/nx-cloud-tasks-runner-shell.js',
+  
   // Gradle plugin files
   'node_modules/@nx/gradle/src/plugin-v1/utils/get-gradle-report.js',
   'node_modules/@nx/gradle/src/executors/gradle/gradle.impl.js',
