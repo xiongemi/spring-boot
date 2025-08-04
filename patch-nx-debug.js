@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+// "node patch-nx-debug.js && node fix-nx-split-error.js && node comprehensive-nx-split-fix.js",
+
 
 const fs = require('fs');
 const path = require('path');
@@ -80,8 +82,9 @@ const replacement = `function getTargetConfigurationForTask(task, projectGraph) 
             console.log('❌ SPRING_BOOT_DEBUG: split() called on undefined/null value');
             console.log('❌ SPRING_BOOT_DEBUG: Current task:', task.target.target, 'project:', task.target.project);
             console.trace('Split error stack trace');
+            return [];
         }
-        return originalSplit.apply(this, args);
+        return originalSplit.call(this, ...args);
     };
     
     try {

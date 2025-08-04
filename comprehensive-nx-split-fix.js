@@ -20,7 +20,7 @@ if (!global.__SPLIT_FIX_APPLIED__) {
       // Return an empty array instead of crashing
       return [];
     }
-    return originalStringSplit.apply(this, args);
+    return originalStringSplit.call(this, ...args);
   };
 
   // Also protect against common split usage patterns
