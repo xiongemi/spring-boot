@@ -5,14 +5,27 @@ permissions:
 jobs:
   build:
     name: Build Pull Request
-    if: ${{ github.repository == 'spring-projects/spring-boot' }}
     runs-on: ${{ vars.UBUNTU_MEDIUM || 'ubuntu-latest' }}
     steps:
       - name: Check Out Code
         uses: actions/checkout@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 22
+          check-latest: true
+          cache: npm
+      - run: npm install
+      - run: NX_CLOUD_RETRIEVAL_CONCURRENCY=8 NX_VERBOSE_LOGGING=true NX_CLOUD_NO_TIMEOUTS=true NX_PERF_LOGGING=true npx nx-cloud start-ci-run --distribute-on="16 linux-extra-large-plus-jvm" --require-explicit-completion
+
       - name: Build
         id: build
         uses: ./.github/actions/build
+
+      - name: Stop nx cloud agents
+        if: always()
+        run: npx nx-cloud complete-ci-run
+
       - name: Print JVM Thread Dumps When Cancelled
         if: cancelled()
         uses: ./.github/actions/print-jvm-thread-dumps
@@ -21,4 +34,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: build-reports
-          path: '**/build/reports/'
+          path: "**/build/reports/"
