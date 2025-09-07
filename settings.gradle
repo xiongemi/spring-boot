@@ -1,8 +1,9 @@
 pluginManagement {
 	evaluate(new File("${rootDir}/buildSrc/SpringRepositorySupport.groovy")).apply(this)
 	repositories {
-		mavenCentral()
+		mavenLocal()
 		gradlePluginPortal()
+		mavenCentral()
 		spring.mavenRepositories();
 	}
 	resolutionStrategy {
