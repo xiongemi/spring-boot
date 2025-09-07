@@ -1,0 +1,11 @@
+{
+    "name": "spring-boot",
+    "scripts": {
+        "postinstall": "node patch.js",
+        "postci": "node patch.js"
+    },
+    "dependencies": {
+        "@nx/gradle": "21.0.0-beta.11",
+        "nx": "21.0.0-beta.11"
+    }
+}
