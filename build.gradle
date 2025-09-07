@@ -9,12 +9,16 @@ defaultTasks 'build'
 
 allprojects {
 	group = "org.springframework.boot"
+	apply {
+		plugin("project-report")
+	}
 }
 
 subprojects {
 	apply plugin: "org.springframework.boot.conventions"
 
 	repositories {
+		mavenLocal()
 		mavenCentral()
 		spring.mavenRepositories()
 	}
@@ -24,3 +28,14 @@ subprojects {
 	}
 }
 
+tasks.register("projectReportAll") {
+    // All project reports of subprojects
+    allprojects.forEach {
+        dependsOn(it.tasks.getAt("projectReport"))
+    }
+
+    // All projectReportAll of included builds
+    gradle.includedBuilds.forEach {
+        dependsOn(it.task(":projectReportAll"))
+    }
+}
