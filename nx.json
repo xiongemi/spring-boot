@@ -1,0 +1,24 @@
+{
+  "installation": {
+    "version": "0.0.0-pr-29464-077bd35",
+    "plugins": {
+      "@nx/gradle": "0.0.0-pr-29464-077bd35"
+    }
+  },
+  "plugins": [
+    {
+      "plugin": "@nx/gradle",
+      "options": {
+        "testTargetName": "test",
+        "classesTargetName": "classes",
+        "buildTargetName": "build"
+      }
+    }
+  ],
+  "namedInputs": {
+    "default": ["{projectRoot}/**/*"],
+    "production": ["default", "!{projectRoot}/src/test/**/*"]
+  },
+  "nxCloudUrl": "https://staging.nx.app",
+  "nxCloudId": "67a56832eb5d9093e3ebe776"
+}
